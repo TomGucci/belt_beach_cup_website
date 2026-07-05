@@ -1,0 +1,1256 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BELT Beach Cup 2026 — Torneo di Beach Volley</title>
+<meta name="description" content="BELT Beach Cup 2026: tre weekend di beach volley ad Agosto. Tabelloni live, risultati, gironi, merch e info.">
+
+<!-- Anteprima social (WhatsApp, Instagram, Telegram...) -->
+<meta property="og:title" content="BELT Beach Cup 2026">
+<meta property="og:description" content="Tre weekend di beach volley ad Agosto: tabelloni live, gironi, finali e merch ufficiale.">
+<meta property="og:type" content="website">
+<!-- 🔧 quando il sito è online, sostituisci con l'URL ASSOLUTO di una foto orizzontale del torneo (min 1200×630), es. https://tuosito/copertina.jpg -->
+<meta property="og:image" content="icon-512.png">
+<meta name="twitter:card" content="summary">
+
+<!-- Icona e PWA -->
+<meta name="theme-color" content="#0D2A43">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%230D2A43'/><circle cx='50' cy='52' r='26' fill='%23FFB92E'/><path d='M18 86h64' stroke='%23F3E7CF' stroke-width='9' stroke-linecap='round'/></svg>">
+<link rel="apple-touch-icon" href="icon-192.png">
+<link rel="manifest" href="manifest.webmanifest">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Archivo:ital,wght@0,400;0,500;0,600;0,700;1,400&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   BELT BEACH CUP — foglio di stile
+   Palette: sabbia / notte adriatica / mare / sole / corallo
+   ============================================================ */
+:root{
+  --sabbia:      #F3E7CF;
+  --sabbia-chiara:#FAF3E3;
+  --notte:       #0D2A43;
+  --notte-2:     #14395B;
+  --mare:        #0E86B5;
+  --mare-scuro:  #0A5E80;
+  --sole:        #FFB92E;
+  --corallo:     #FF5348;
+  --bianco:      #FFFFFF;
+  --linea:       rgba(13,42,67,.16);
+  --f-display:   "Anton", "Arial Narrow", sans-serif;
+  --f-body:      "Archivo", "Helvetica Neue", sans-serif;
+  --f-mono:      "IBM Plex Mono", "Courier New", monospace;
+}
+*{ box-sizing:border-box; margin:0; padding:0; }
+html{ scroll-behavior:smooth; }
+@media (prefers-reduced-motion: reduce){
+  html{ scroll-behavior:auto; }
+  *, *::before, *::after{ animation:none !important; transition:none !important; }
+}
+body{
+  font-family:var(--f-body);
+  background:var(--sabbia);
+  color:var(--notte);
+  line-height:1.55;
+}
+a{ color:inherit; }
+img{ max-width:100%; display:block; }
+
+/* ---------- utilità tipografiche ---------- */
+.display{ font-family:var(--f-display); text-transform:uppercase; line-height:.95; letter-spacing:.01em; font-weight:400; }
+.etichetta{
+  font-size:.72rem; font-weight:700; letter-spacing:.18em; text-transform:uppercase;
+  color:var(--mare-scuro);
+}
+.mono{ font-family:var(--f-mono); }
+
+/* ---------- navigazione ---------- */
+.nav{
+  position:sticky; top:0; z-index:50;
+  background:var(--sabbia-chiara);
+  border-bottom:3px double var(--notte);
+  display:flex; align-items:center; gap:1rem;
+  padding:.6rem 1.2rem;
+}
+.nav-logo{
+  font-family:var(--f-display); font-size:1.25rem; text-transform:uppercase;
+  text-decoration:none; letter-spacing:.02em;
+}
+.nav-logo em{ font-style:normal; color:var(--mare); }
+.nav-links{ margin-left:auto; display:flex; gap:.2rem; flex-wrap:wrap; }
+.nav-links a{
+  text-decoration:none; font-size:.78rem; font-weight:600; letter-spacing:.1em;
+  text-transform:uppercase; padding:.45rem .7rem; border-radius:999px;
+  transition:background .15s ease;
+}
+.nav-links a:hover{ background:rgba(14,134,181,.12); }
+.nav-links a:focus-visible, button:focus-visible{ outline:3px solid var(--mare); outline-offset:2px; }
+
+/* ---------- hero ---------- */
+.hero{
+  position:relative; overflow:hidden;
+  background:linear-gradient(180deg, #7FC7E3 0%, #BFE3EF 55%, var(--sabbia) 100%);
+  padding:4.5rem 1.2rem 0;
+  text-align:center;
+  border-bottom:3px double var(--notte);
+}
+.hero-sole{
+  position:absolute; left:50%; top:52%; transform:translateX(-50%);
+  width:min(560px,80vw); aspect-ratio:2/1;
+  background:radial-gradient(circle at 50% 100%, var(--sole) 0 58%, rgba(255,185,46,.35) 59% 70%, transparent 71%);
+  border-radius:560px 560px 0 0;
+  pointer-events:none;
+}
+.hero-contenuto{ position:relative; max-width:920px; margin:0 auto; }
+.hero h1{ font-size:clamp(3.2rem, 11vw, 7.5rem); color:var(--notte); }
+.hero h1 .anno{ color:var(--mare-scuro); }
+.hero-sub{
+  margin:.9rem auto 2rem; max-width:34rem; font-size:1.05rem; font-weight:500;
+}
+.hero-date{
+  position:relative;
+  display:flex; gap:.8rem; justify-content:center; flex-wrap:wrap;
+  padding-bottom:3rem;
+}
+.bandiera{
+  background:var(--bianco); border:2px solid var(--notte);
+  border-radius:.5rem .5rem 1.4rem 1.4rem;
+  padding:.7rem 1.1rem .8rem; min-width:150px;
+  box-shadow:0 4px 0 var(--notte);
+  text-decoration:none;
+  transition:transform .15s ease;
+}
+.bandiera:hover{ transform:translateY(-3px); }
+.bandiera .quando{ font-family:var(--f-mono); font-weight:600; font-size:.8rem; color:var(--mare-scuro); }
+.bandiera .cosa{ font-family:var(--f-display); font-size:1.15rem; text-transform:uppercase; }
+.bandiera .chi{ font-size:.75rem; font-weight:600; letter-spacing:.06em; text-transform:uppercase; color:var(--corallo); }
+
+/* ---------- sezioni ---------- */
+section{ padding:3.5rem 1.2rem; }
+.contenitore{ max-width:1080px; margin:0 auto; }
+.titolo-sezione{ font-size:clamp(2rem,5vw,3rem); margin:.2rem 0 1.6rem; }
+section + section{ border-top:3px double var(--notte); }
+
+/* ---------- eventi ---------- */
+.griglia-eventi{ display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:1.2rem; }
+.carta-evento{
+  background:var(--bianco); border:2px solid var(--notte); border-radius:.8rem;
+  padding:1.4rem; box-shadow:0 5px 0 var(--notte);
+  display:flex; flex-direction:column; gap:.55rem;
+}
+.carta-evento h3{ font-family:var(--f-display); font-size:1.6rem; text-transform:uppercase; }
+.carta-evento .dato{ display:flex; justify-content:space-between; gap:1rem; font-size:.92rem; border-bottom:1px solid var(--linea); padding:.3rem 0; }
+.carta-evento .dato b{ font-family:var(--f-mono); font-weight:600; }
+.carta-evento .vai{
+  margin-top:auto; align-self:flex-start;
+  font-size:.78rem; font-weight:700; letter-spacing:.12em; text-transform:uppercase;
+  text-decoration:none; color:var(--bianco); background:var(--mare);
+  padding:.55rem .9rem; border-radius:999px;
+}
+.carta-evento .vai:hover{ background:var(--mare-scuro); }
+
+/* ---------- tabelloni ---------- */
+.barra-live{ display:flex; align-items:center; gap:.7rem; flex-wrap:wrap; margin-bottom:1.2rem; }
+.pallino{ width:.6rem; height:.6rem; border-radius:50%; background:#9aa7b1; display:inline-block; }
+.pallino.attivo{ background:var(--corallo); animation:batti 1.4s infinite; }
+@keyframes batti{ 50%{ opacity:.35; } }
+.nota-agg{ font-size:.8rem; color:var(--mare-scuro); font-family:var(--f-mono); }
+
+.tabs, .subtabs{ display:flex; gap:.4rem; flex-wrap:wrap; }
+.tabs{ margin-bottom:1rem; }
+.tabs button, .subtabs button{
+  font-family:var(--f-body); font-weight:700; font-size:.8rem; letter-spacing:.08em;
+  text-transform:uppercase; cursor:pointer;
+  border:2px solid var(--notte); background:var(--bianco); color:var(--notte);
+  padding:.5rem .9rem; border-radius:999px;
+}
+.tabs button[aria-selected="true"]{ background:var(--notte); color:var(--sole); }
+.subtabs{ margin:0 0 1.2rem; }
+.subtabs button{ border-width:1px; font-weight:600; }
+.subtabs button[aria-selected="true"]{ background:var(--mare); border-color:var(--mare); color:var(--bianco); }
+
+/* bracket a colonne, scorrevole in orizzontale */
+.bracket{
+  display:flex; gap:1.4rem; overflow-x:auto; padding:.4rem .2rem 1rem;
+  scrollbar-width:thin;
+}
+.round{ min-width:230px; display:flex; flex-direction:column; }
+.round h4{
+  font-family:var(--f-mono); font-size:.75rem; font-weight:600; letter-spacing:.1em;
+  text-transform:uppercase; color:var(--mare-scuro);
+  border-bottom:2px solid var(--notte); padding-bottom:.35rem; margin-bottom:.8rem;
+  position:sticky; left:0;
+}
+.round .partite{ flex:1; display:flex; flex-direction:column; justify-content:space-around; gap:.7rem; }
+
+/* chip partita in stile segnapunti */
+.partita{
+  background:var(--notte); color:var(--bianco); border-radius:.55rem;
+  overflow:hidden; font-size:.86rem;
+  border:2px solid var(--notte);
+}
+.partita .codice{
+  font-family:var(--f-mono); font-size:.62rem; letter-spacing:.12em;
+  background:var(--notte-2); color:#9fc3d8; padding:.15rem .55rem;
+  display:flex; justify-content:space-between; gap:.6rem;
+}
+.partita .codice .dove{ white-space:nowrap; color:var(--sole); }
+.riga-squadra{
+  display:flex; align-items:center; gap:.5rem;
+  padding:.42rem .55rem;
+}
+.riga-squadra + .riga-squadra{ border-top:1px solid rgba(255,255,255,.14); }
+.riga-squadra .nome{ flex:1; min-width:0; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; font-weight:600; }
+.riga-squadra .nome.tbd{ color:#8ba2b5; font-weight:400; font-style:italic; }
+.riga-squadra .set{ font-family:var(--f-mono); font-size:.78rem; font-weight:600; color:#cfe3ee; letter-spacing:.05em; }
+.riga-squadra.vincente{ background:var(--sole); color:var(--notte); }
+.riga-squadra.vincente .set{ color:var(--notte); }
+.riga-squadra.vincente .nome::after{ content:" ✓"; font-weight:700; }
+
+/* partita in corso */
+.partita.live{ border-color:var(--corallo); box-shadow:0 0 0 2px rgba(255,83,72,.28); }
+.partita.live .codice{ background:var(--corallo); color:#fff; }
+.partita.live .codice .dove{ color:#fff; }
+.live-tag{ font-weight:700; letter-spacing:.08em; animation:batti 1.4s infinite; }
+
+/* programma (partite in ordine di orario) */
+.programma{ display:grid; gap:.45rem; }
+.riga-prog{
+  display:grid; grid-template-columns:auto auto 1fr auto; align-items:center; gap:.8rem;
+  background:var(--bianco); border:2px solid var(--notte); border-radius:.55rem;
+  padding:.5rem .8rem; font-size:.9rem;
+}
+.riga-prog.live{ border-color:var(--corallo); box-shadow:0 0 0 2px rgba(255,83,72,.2); }
+.riga-prog .quando{ font-weight:600; color:var(--mare-scuro); white-space:nowrap; }
+.riga-prog .campo{
+  font-size:.68rem; font-weight:700; letter-spacing:.08em; text-transform:uppercase;
+  background:var(--notte); color:var(--sole); border-radius:.35rem; padding:.15rem .45rem; white-space:nowrap;
+}
+.riga-prog .campo:empty{ display:none; }
+.riga-prog .chi-gioca{ min-width:0; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+.riga-prog .chi-gioca i{ font-style:normal; color:var(--mare-scuro); font-size:.78rem; }
+.riga-prog .stato{ font-size:.8rem; font-weight:600; white-space:nowrap; }
+.riga-prog .stato.in-attesa{ color:#9aa7b1; }
+.riga-prog .stato.live-tag{ color:var(--corallo); }
+.vuoto-prog{
+  padding:1rem 1.1rem; border:2px dashed var(--notte); border-radius:.6rem;
+  background:var(--sabbia-chiara); font-size:.92rem;
+}
+
+/* albo d'oro */
+.griglia-podio{ display:grid; grid-template-columns:repeat(auto-fit,minmax(230px,1fr)); gap:1.2rem; }
+.podio-card{
+  background:var(--bianco); border:2px solid var(--notte); border-radius:.8rem;
+  padding:1.1rem 1.2rem; box-shadow:0 5px 0 var(--notte);
+}
+.podio-card h3{ font-family:var(--f-display); text-transform:uppercase; font-size:1.2rem; }
+.quando-podio{ font-size:.75rem; color:var(--mare-scuro); margin:.1rem 0 .7rem; }
+.medaglia{
+  display:flex; align-items:center; gap:.55rem; padding:.4rem .55rem;
+  border-radius:.45rem; font-weight:600; font-size:.92rem;
+}
+.medaglia + .medaglia{ margin-top:.3rem; }
+.medaglia .ico{ font-size:1.05rem; }
+.medaglia.oro{ background:var(--sole); }
+.medaglia.argento{ background:#E8EDF1; }
+.medaglia.bronzo{ background:#F3D9C4; }
+.medaglia.da-assegnare{ background:var(--sabbia-chiara); color:#9aa7b1; font-weight:500; font-style:italic; }
+
+/* gironi */
+.griglia-gironi{ display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:1.2rem; }
+.girone{ background:var(--bianco); border:2px solid var(--notte); border-radius:.8rem; overflow:hidden; }
+.girone h4{
+  font-family:var(--f-display); text-transform:uppercase; font-size:1.1rem;
+  background:var(--notte); color:var(--sole); padding:.5rem .8rem;
+}
+.girone table{ width:100%; border-collapse:collapse; font-size:.86rem; }
+.girone th, .girone td{ padding:.42rem .6rem; text-align:left; border-bottom:1px solid var(--linea); }
+.girone th{ font-size:.68rem; letter-spacing:.1em; text-transform:uppercase; color:var(--mare-scuro); }
+.girone td.num{ font-family:var(--f-mono); font-weight:600; text-align:center; }
+.girone th.num{ text-align:center; }
+.girone tr.qualificata td:first-child{ box-shadow:inset 4px 0 0 var(--sole); }
+.girone .partite-girone{ padding:.6rem .8rem .8rem; border-top:2px solid var(--notte); display:grid; gap:.4rem; }
+.girone .pg{
+  display:flex; justify-content:space-between; gap:.6rem; font-size:.82rem;
+  padding:.28rem .45rem; background:var(--sabbia-chiara); border-radius:.35rem;
+}
+.girone .pg .mono{ font-size:.76rem; font-weight:600; color:var(--mare-scuro); white-space:nowrap; }
+.girone .pg .vs{ min-width:0; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+.girone .pg .vs b{ font-weight:700; }
+.legenda-gironi{ font-size:.8rem; color:var(--mare-scuro); margin-top:.9rem; }
+
+/* ---------- shop ---------- */
+.griglia-shop{ display:grid; grid-template-columns:repeat(auto-fit,minmax(230px,1fr)); gap:1.2rem; }
+.prodotto{
+  background:var(--bianco); border:2px solid var(--notte); border-radius:.8rem;
+  overflow:hidden; box-shadow:0 5px 0 var(--notte);
+}
+.prodotto .foto{
+  aspect-ratio:1/1; display:grid; place-items:center;
+  background:repeating-linear-gradient(45deg, #dff0f7 0 14px, #eef7fb 14px 28px);
+  color:var(--mare-scuro); font-size:.8rem; font-weight:600; letter-spacing:.08em; text-transform:uppercase;
+}
+.prodotto .foto img{ width:100%; height:100%; object-fit:cover; }
+
+/* visualizzatore 3D pantaloncino */
+.foto-3d{ position:relative; touch-action:none; user-select:none; }
+.foto-3d img{ object-fit:contain !important; background:#fff; }
+.foto-3d canvas{ width:100% !important; height:100% !important; display:block; cursor:grab; }
+.foto-3d.trascinando canvas{ cursor:grabbing; }
+.suggerimento-3d{
+  position:absolute; bottom:.55rem; left:50%; transform:translateX(-50%);
+  background:rgba(13,42,67,.88); color:#fff; font-size:.62rem; font-weight:700;
+  letter-spacing:.1em; text-transform:uppercase; padding:.28rem .65rem; border-radius:999px;
+  pointer-events:none; white-space:nowrap; display:none;
+}
+.foto-3d.attiva-3d .suggerimento-3d{ display:block; }
+.prodotto .info{ padding: .9rem 1rem 1.1rem; }
+.prodotto h3{ font-family:var(--f-display); text-transform:uppercase; font-size:1.15rem; }
+.prodotto .dettagli{ font-size:.85rem; color:var(--mare-scuro); margin:.15rem 0 .5rem; }
+.prodotto .prezzo{ font-family:var(--f-mono); font-weight:600; font-size:1.15rem; }
+.nota-shop{
+  margin-top:1.4rem; padding:.9rem 1.1rem; border:2px dashed var(--notte); border-radius:.6rem;
+  font-size:.92rem; background:var(--sabbia-chiara);
+}
+
+/* ---------- regolamento ---------- */
+.regola{ background:var(--bianco); border:2px solid var(--notte); border-radius:.6rem; margin-bottom:.7rem; overflow:hidden; }
+.regola summary{
+  cursor:pointer; padding:.85rem 1rem; font-weight:700; letter-spacing:.04em;
+  list-style:none; display:flex; justify-content:space-between; align-items:center; gap:1rem;
+}
+.regola summary::-webkit-details-marker{ display:none; }
+.regola summary::after{ content:"+"; font-family:var(--f-mono); font-size:1.1rem; }
+.regola[open] summary::after{ content:"–"; }
+.regola .corpo{ padding:0 1rem 1rem; font-size:.94rem; }
+.regola .corpo p + p{ margin-top:.5rem; }
+
+/* ---------- location / contatti ---------- */
+.due-colonne{ display:grid; grid-template-columns:1fr 1fr; gap:1.6rem; align-items:start; }
+@media (max-width:760px){ .due-colonne{ grid-template-columns:1fr; } }
+.scheda{
+  background:var(--bianco); border:2px solid var(--notte); border-radius:.8rem; padding:1.2rem 1.3rem;
+}
+.scheda h3{ font-family:var(--f-display); text-transform:uppercase; font-size:1.25rem; margin-bottom:.5rem; }
+.scheda ul{ padding-left:1.1rem; }
+.scheda li{ margin:.3rem 0; font-size:.94rem; }
+.mappa{
+  border:2px solid var(--notte); border-radius:.8rem; overflow:hidden;
+  aspect-ratio:4/3; background:#dff0f7; display:grid; place-items:center;
+  color:var(--mare-scuro); font-size:.85rem; text-align:center; padding:1rem;
+}
+.mappa iframe{ width:100%; height:100%; border:0; }
+.mappa a{ display:block; width:100%; height:100%; }
+.mappa img{ width:100%; height:100%; object-fit:cover; }
+
+/* sponsor */
+.fila-sponsor{ display:flex; gap:1rem; flex-wrap:wrap; }
+.sponsor{
+  flex:1 1 150px; min-height:80px; display:grid; place-items:center;
+  border:2px dashed var(--notte); border-radius:.6rem; background:var(--sabbia-chiara);
+  font-size:.8rem; font-weight:600; letter-spacing:.08em; text-transform:uppercase; color:var(--mare-scuro);
+}
+
+/* footer */
+footer{
+  background:var(--notte); color:var(--sabbia);
+  padding:2rem 1.2rem; text-align:center; font-size:.85rem;
+  border-top:6px solid var(--sole);
+}
+footer .display{ font-size:1.4rem; color:var(--sole); margin-bottom:.4rem; }
+</style>
+</head>
+<body>
+
+<!-- ================= NAVIGAZIONE ================= -->
+<nav class="nav" aria-label="Principale">
+  <a class="nav-logo" href="#top">BELT <em>Beach Cup</em></a>
+  <div class="nav-links">
+    <a href="#eventi">Eventi</a>
+    <a href="#tabelloni">Tabelloni</a>
+    <a href="#albo">Albo d'oro</a>
+    <a href="#shop">Shop</a>
+    <a href="#regolamento">Regolamento</a>
+    <a href="#location">Location</a>
+    <a href="#contatti">Contatti</a>
+  </div>
+</nav>
+
+<!-- ================= HERO ================= -->
+<header class="hero" id="top">
+  <div class="hero-sole" aria-hidden="true"></div>
+  <div class="hero-contenuto">
+    <h1 class="display">BELT Beach Cup <span class="anno">2026</span></h1>
+    <p class="hero-sub">Tre weekend di beach volley sotto il sole di Agosto: tabelloni live, gironi, finali al tramonto e merch ufficiale.</p>
+    <div class="hero-date">
+      <a class="bandiera" href="#tabelloni" data-vai-evento="m2x2">
+        <div class="quando">8–9 AGO</div>
+        <div class="cosa">2×2</div>
+        <div class="chi">Maschile · 32 coppie</div>
+      </a>
+      <a class="bandiera" href="#tabelloni" data-vai-evento="f2x2">
+        <div class="quando">12–13 AGO</div>
+        <div class="cosa">2×2</div>
+        <div class="chi">Femminile · 20 coppie</div>
+      </a>
+      <a class="bandiera" href="#tabelloni" data-vai-evento="q4x4">
+        <div class="quando">12–13 AGO</div>
+        <div class="cosa">4×4</div>
+        <div class="chi">Maschile · 12 squadre</div>
+      </a>
+      <a class="bandiera" href="#tabelloni" data-vai-evento="x2x2">
+        <div class="quando">22–23 AGO</div>
+        <div class="cosa">2×2</div>
+        <div class="chi">Misto · 32 coppie</div>
+      </a>
+    </div>
+  </div>
+</header>
+
+<!-- ================= EVENTI ================= -->
+<section id="eventi">
+  <div class="contenitore">
+    <div class="etichetta">Il programma</div>
+    <h2 class="display titolo-sezione">Quattro eventi, tre weekend</h2>
+    <div class="griglia-eventi" id="griglia-eventi"><!-- generata da JS --></div>
+  </div>
+</section>
+
+<!-- ================= TABELLONI ================= -->
+<section id="tabelloni">
+  <div class="contenitore">
+    <div class="etichetta">Risultati in diretta</div>
+    <h2 class="display titolo-sezione">Tabelloni</h2>
+
+    <div class="barra-live">
+      <span class="pallino" id="pallino-live" aria-hidden="true"></span>
+      <span class="nota-agg" id="nota-aggiornamento">Risultati caricati dal sito</span>
+    </div>
+
+    <div class="tabs" role="tablist" aria-label="Scegli evento" id="tabs-eventi"><!-- JS --></div>
+    <div id="pannello-evento"><!-- JS --></div>
+  </div>
+</section>
+
+<!-- ================= ALBO D'ORO ================= -->
+<section id="albo">
+  <div class="contenitore">
+    <div class="etichetta">I podi</div>
+    <h2 class="display titolo-sezione">Albo d'oro</h2>
+    <div class="griglia-podio" id="griglia-albo"><!-- generata da JS --></div>
+  </div>
+</section>
+
+<!-- ================= SHOP ================= -->
+<section id="shop">
+  <div class="contenitore">
+    <div class="etichetta">Merch ufficiale</div>
+    <h2 class="display titolo-sezione">Shop</h2>
+    <div class="griglia-shop">
+      <!-- I pantaloncini con data-viewer3d diventano modelli 3D girevoli (texture in tessuti-3d.js) -->
+      <div class="prodotto">
+        <div class="foto foto-3d" data-viewer3d="drago">
+          <img src="grafica-pantaloncino-drago.jpg" alt="Pantaloncini Drago — kit 2×2 Maschile">
+          <span class="suggerimento-3d">↔ Trascina per ruotare</span>
+        </div>
+        <div class="info">
+          <h3>Pantaloncini «Drago»</h3>
+          <p class="dettagli">Kit 2×2 Maschile · Taglie S–XXL</p>
+          <p class="prezzo">20 €</p>
+        </div>
+      </div>
+      <div class="prodotto">
+        <div class="foto foto-3d" data-viewer3d="onda">
+          <img src="grafica-pantaloncino-onda.jpg" alt="Pantaloncini Onda — kit 2×2 Misto">
+          <span class="suggerimento-3d">↔ Trascina per ruotare</span>
+        </div>
+        <div class="info">
+          <h3>Pantaloncini «Onda»</h3>
+          <p class="dettagli">Kit 2×2 Misto · Taglie S–XXL</p>
+          <p class="prezzo">20 €</p>
+        </div>
+      </div>
+      <div class="prodotto">
+        <div class="foto foto-3d" data-viewer3d="fenice">
+          <img src="grafica-pantaloncino-fenice.jpg" alt="Pantaloncini Fenice — kit 4×4 Maschile">
+          <span class="suggerimento-3d">↔ Trascina per ruotare</span>
+        </div>
+        <div class="info">
+          <h3>Pantaloncini «Fenice»</h3>
+          <p class="dettagli">Kit 4×4 Maschile · Taglie S–XXL</p>
+          <p class="prezzo">20 €</p>
+        </div>
+      </div>
+      <div class="prodotto">
+        <div class="foto">
+          <img src="grafica-top-onda.jpg" alt="Top Onda — kit 2×2 Misto" style="object-fit:contain;background:#fff;">
+        </div>
+        <div class="info">
+          <h3>Top «Onda»</h3>
+          <p class="dettagli">Kit 2×2 Misto · Taglie S–XL</p>
+          <p class="prezzo">25 €</p>
+        </div>
+      </div>
+      <div class="prodotto">
+        <div class="foto">
+          <img src="grafica-top-sakura.jpg" alt="Top Sakura — kit 2×2 Femminile" style="object-fit:contain;background:#fff;">
+        </div>
+        <div class="info">
+          <h3>Top «Sakura»</h3>
+          <p class="dettagli">Kit 2×2 Femminile · Taglie S–XL</p>
+          <p class="prezzo">25 €</p>
+        </div>
+      </div>
+    </div>
+    <p class="nota-shop">🏖️ Il merch è in vendita <b>direttamente al campo</b> durante i giorni di torneo, fino a esaurimento. Completo top + pantaloncini a <b>40 €</b>. Niente spedizioni: passa a trovarci!</p>
+  </div>
+</section>
+
+<!-- ================= REGOLAMENTO ================= -->
+<section id="regolamento">
+  <div class="contenitore">
+    <div class="etichetta">Come si gioca</div>
+    <h2 class="display titolo-sezione">Regolamento</h2>
+
+    <details class="regola" open>
+      <summary>2×2 Maschile e 2×2 Misto — doppia eliminazione</summary>
+      <div class="corpo">
+        <p>32 coppie inserite nel <b>tabellone vincenti</b>. Chi perde una partita scende nel <b>tabellone perdenti</b>: la seconda sconfitta elimina. La vincente del tabellone perdenti affronta la vincente del tabellone vincenti nella <b>finalissima</b>.</p>
+        <p>Partite al meglio di 1 set a 21 punti (finali: 2 set su 3, terzo set a 15). Cambio campo ogni 7 punti.</p>
+      </div>
+    </details>
+
+    <details class="regola">
+      <summary>2×2 Femminile — gironi + fase finale</summary>
+      <div class="corpo">
+        <p>20 coppie divise in <b>4 gironi da 5</b> all'italiana (tutte contro tutte). Le prime 2 di ogni girone accedono ai quarti di finale a eliminazione diretta.</p>
+        <p>Gironi: 1 set a 21. Fase finale: 2 set su 3, terzo set a 15.</p>
+      </div>
+    </details>
+
+    <details class="regola">
+      <summary>4×4 Maschile — gironi + fase finale</summary>
+      <div class="corpo">
+        <p>12 squadre divise in <b>3 gironi da 4</b>. Si qualificano ai quarti le prime 2 di ogni girone e le <b>2 migliori terze</b>.</p>
+        <p>Gironi: 1 set a 21. Fase finale: 2 set su 3, terzo set a 15.</p>
+      </div>
+    </details>
+
+    <details class="regola">
+      <summary>Norme generali</summary>
+      <div class="corpo">
+        <p>Check-in 30 minuti prima della propria partita. Ritardo oltre 10 minuti = partita persa 21–0. Classifica gironi: vittorie, poi differenza set, poi differenza punti, poi scontro diretto.</p>
+        <p>Arbitraggio a cura della squadra che riposa. Decisioni dell'organizzazione insindacabili. Si gioca con qualsiasi condizione meteo salvo diversa comunicazione.</p>
+      </div>
+    </details>
+  </div>
+</section>
+
+<!-- ================= LOCATION ================= -->
+<section id="location">
+  <div class="contenitore">
+    <div class="etichetta">Dove siamo</div>
+    <h2 class="display titolo-sezione">Location</h2>
+    <div class="due-colonne">
+      <div class="scheda">
+        <h3>Playa Solero Beach Club</h3>
+        <p><b>Lungomare di Palombina — Ancona</b></p>
+        <ul>
+          <li><b>In auto:</b> SS16, uscita Palombina; parcheggio lungo Via delle Ville. Nei weekend di torneo consigliamo di arrivare entro le 8:30.</li>
+          <li><b>In treno:</b> fermata Palombina a due passi dal campo.</li>
+          <li><b>Servizi:</b> bar e docce presso lo stabilimento.</li>
+        </ul>
+      </div>
+      <div class="mappa">
+        <a href="https://www.google.com/maps/search/?api=1&amp;query=Playa+Solero+Palombina+Ancona" target="_blank" rel="noopener" title="Apri in Google Maps">
+          <img src="mappa_belt.png" alt="Mappa — Playa Solero, lungomare di Palombina, tra la fermata Palombina e la spiaggia">
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= SPONSOR + CONTATTI ================= -->
+<section id="contatti">
+  <div class="contenitore">
+    <div class="etichetta">Chi ci sostiene</div>
+    <h2 class="display titolo-sezione">Sponsor &amp; contatti</h2>
+    <div class="fila-sponsor" style="margin-bottom:1.6rem;">
+      <!-- 🔧 Sostituisci ogni riquadro con <img src="logo.png" alt="Nome sponsor"> -->
+      <div class="sponsor">Logo sponsor</div>
+      <div class="sponsor">Logo sponsor</div>
+      <div class="sponsor">Logo sponsor</div>
+      <div class="sponsor">Logo sponsor</div>
+    </div>
+    <div class="due-colonne">
+      <div class="scheda">
+        <h3>Contatti organizzazione</h3>
+        <ul>
+          <!-- 🔧 Inserisci i contatti reali -->
+          <li>Instagram: <a href="https://instagram.com/" target="_blank" rel="noopener">@beltbeachcup</a></li>
+          <li>WhatsApp: <a href="https://wa.me/39XXXXXXXXXX">+39 XXX XXX XXXX</a></li>
+          <li>Email: <a href="mailto:info@example.com">info@example.com</a></li>
+        </ul>
+      </div>
+      <div class="scheda">
+        <h3>Vuoi diventare sponsor?</h3>
+        <p style="font-size:.94rem;">Scrivici: offriamo visibilità sui campi, sul sito e sui social durante i tre weekend di torneo.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="display">BELT Beach Cup 2026</div>
+  <p>Agosto 2026 · Organizzazione BELT · Tutti i risultati su questa pagina</p>
+</footer>
+
+<!-- Three.js per il visualizzatore 3D dello shop (se il CDN non è raggiungibile resta la foto) -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<!-- Texture dei pantaloncini incorporate in base64 (generate dal PDF delle grafiche):
+     così il 3D funziona anche aprendo index.html in locale con doppio clic. -->
+<script src="tessuti-3d.js"></script>
+<script>
+/* ================================================================
+   BELT BEACH CUP — logica tabelloni
+   ----------------------------------------------------------------
+   COME AGGIORNARE I RISULTATI (2 modi):
+
+   1) LOCALE — modifica l'oggetto RISULTATI qui sotto:
+        'MV1-3': { p:'21-15 21-18', o:'SAB 10:30', c:'Campo 1' }
+      p = punteggi dei set separati da spazio (punti squadra A - punti squadra B)
+      o = orario (opzionale, es. '10:30' o 'SAB 10:30' / 'DOM 09:00')
+      c = campo  (opzionale, es. 'Campo 2')
+      Il vincitore viene dedotto dai set; il tabellone si aggiorna da solo.
+
+      PARTITA IN CORSO: scrivi 'LIVE' nel punteggio, con eventuale parziale:
+        'MV1-4': { p:'LIVE 15-12' }
+      La partita si evidenzia in corallo, senza assegnare il vincitore.
+
+   2) GOOGLE SHEETS (consigliato durante il torneo):
+      - crea un foglio con intestazioni:  id | punteggio | orario | campo
+        (orario e campo sono facoltativi)
+      - File → Condividi → Pubblica sul web → scegli il foglio → formato CSV
+      - incolla l'URL generato in FOGLIO_GOOGLE qui sotto
+      Il sito rilegge il foglio ogni AGGIORNA_OGNI_SECONDI secondi.
+   ================================================================ */
+
+const FOGLIO_GOOGLE = '';           // 🔧 incolla qui l'URL CSV pubblicato (lascia '' per usare RISULTATI)
+const AGGIORNA_OGNI_SECONDI = 60;
+
+/* ---------- SQUADRE ISCRITTE (🔧 sostituisci con i nomi reali) ---------- */
+const SQUADRE = {
+  // 32 coppie — l'ordine determina gli accoppiamenti del 1° turno (1ª vs 2ª, 3ª vs 4ª, ...)
+  m2x2: Array.from({length:32}, (_,i)=>`Coppia M${i+1}`),
+  x2x2: Array.from({length:32}, (_,i)=>`Coppia X${i+1}`),
+  // 4 gironi da 5 coppie
+  f2x2: {
+    'A': Array.from({length:5}, (_,i)=>`Coppia FA${i+1}`),
+    'B': Array.from({length:5}, (_,i)=>`Coppia FB${i+1}`),
+    'C': Array.from({length:5}, (_,i)=>`Coppia FC${i+1}`),
+    'D': Array.from({length:5}, (_,i)=>`Coppia FD${i+1}`),
+  },
+  // 3 gironi da 4 squadre
+  q4x4: {
+    'A': Array.from({length:4}, (_,i)=>`Squadra QA${i+1}`),
+    'B': Array.from({length:4}, (_,i)=>`Squadra QB${i+1}`),
+    'C': Array.from({length:4}, (_,i)=>`Squadra QC${i+1}`),
+  },
+};
+
+/* ---------- RISULTATI locali (usati se FOGLIO_GOOGLE è vuoto) ----------
+   Esempi (cancellali quando inizi a inserire quelli veri):              */
+let RISULTATI = {
+  // 'MV1-1': { p:'21-15 21-18', o:'SAB 09:00', c:'Campo 1' },  // conclusa
+  // 'MV1-2': { p:'LIVE 15-12',  o:'SAB 09:00', c:'Campo 2' },  // in corso
+  // 'MV1-3': { o:'SAB 10:30', c:'Campo 1' },                   // solo programmata
+};
+
+/* ================= COSTRUZIONE STRUTTURE ================= */
+
+// nomi round per tabellone vincenti a 32
+const NOMI_W32 = ['Sedicesimi','Ottavi','Quarti','Semifinali','Finale vincenti'];
+
+// crea doppia eliminazione a 32 squadre; pref = prefisso codici (es. 'M')
+function creaDoppiaEliminazione(pref, squadre){
+  const W = [], L = [];
+  // --- tabellone vincenti: 16, 8, 4, 2, 1 partite ---
+  let nW = 16;
+  for(let r=1; r<=5; r++){
+    const partite = [];
+    for(let i=1; i<=nW; i++){
+      const id = `${pref}V${r}-${i}`;
+      const a = r===1 ? {t:'sq', n:squadre[(i-1)*2]}   : {t:'vinc', ref:`${pref}V${r-1}-${i*2-1}`};
+      const b = r===1 ? {t:'sq', n:squadre[(i-1)*2+1]} : {t:'vinc', ref:`${pref}V${r-1}-${i*2}`};
+      partite.push({id, a, b});
+    }
+    W.push({nome:NOMI_W32[r-1], partite});
+    nW = nW/2;
+  }
+  // --- tabellone perdenti: 8, 8, 4, 4, 2, 2, 1 partite ---
+  const strutturaL = [
+    {n:8, mk:(i)=>[{t:'perd', ref:`${pref}V1-${i*2-1}`}, {t:'perd', ref:`${pref}V1-${i*2}`}]},
+    {n:8, mk:(i)=>[{t:'vinc', ref:`${pref}P1-${i}`},     {t:'perd', ref:`${pref}V2-${i}`}]},
+    {n:4, mk:(i)=>[{t:'vinc', ref:`${pref}P2-${i*2-1}`}, {t:'vinc', ref:`${pref}P2-${i*2}`}]},
+    {n:4, mk:(i)=>[{t:'vinc', ref:`${pref}P3-${i}`},     {t:'perd', ref:`${pref}V3-${i}`}]},
+    {n:2, mk:(i)=>[{t:'vinc', ref:`${pref}P4-${i*2-1}`}, {t:'vinc', ref:`${pref}P4-${i*2}`}]},
+    {n:2, mk:(i)=>[{t:'vinc', ref:`${pref}P5-${i}`},     {t:'perd', ref:`${pref}V4-${i}`}]},
+    {n:1, mk:(i)=>[{t:'vinc', ref:`${pref}P6-1`},        {t:'vinc', ref:`${pref}P6-2`}]},
+  ];
+  strutturaL.forEach((st, idx)=>{
+    const r = idx+1, partite = [];
+    for(let i=1; i<=st.n; i++){
+      const [a,b] = st.mk(i);
+      partite.push({id:`${pref}P${r}-${i}`, a, b});
+    }
+    L.push({nome: r===7 ? 'Finale perdenti' : `Perdenti · turno ${r}`, partite});
+  });
+  // --- finalissima ---
+  const F = [{nome:'Finalissima', partite:[
+    {id:`${pref}F1-1`, a:{t:'vinc', ref:`${pref}V5-1`}, b:{t:'vinc', ref:`${pref}P7-1`}}
+  ]}];
+  return [
+    {id:'vincenti', nome:'Tabellone vincenti', tipo:'bracket', rounds:W},
+    {id:'perdenti', nome:'Tabellone perdenti', tipo:'bracket', rounds:L},
+    {id:'finali',   nome:'Finalissima',        tipo:'bracket', rounds:F},
+  ];
+}
+
+// round robin (tutte contro tutte) dentro un girone
+function creaGirone(pref, nome, squadre){
+  const partite = [];
+  let k = 1;
+  for(let i=0; i<squadre.length; i++)
+    for(let j=i+1; j<squadre.length; j++)
+      partite.push({id:`${pref}${nome}-${k++}`, a:{t:'sq', n:squadre[i]}, b:{t:'sq', n:squadre[j]}});
+  return {nome:`Girone ${nome}`, lettera:nome, squadre, partite};
+}
+
+/* ---------- definizione eventi ---------- */
+const EVENTI = [
+  {
+    id:'m2x2', nome:'2×2 Maschile', date:'8–9 Agosto', partecipanti:'32 coppie',
+    formula:'Doppia eliminazione (vincenti / perdenti)',
+    fasi: creaDoppiaEliminazione('M', SQUADRE.m2x2),
+    podio:{ oro:{t:'vinc',ref:'MF1-1'}, argento:{t:'perd',ref:'MF1-1'}, bronzo:{t:'perd',ref:'MP7-1'} },
+  },
+  {
+    id:'f2x2', nome:'2×2 Femminile', date:'12–13 Agosto', partecipanti:'20 coppie',
+    formula:'4 gironi da 5 + fase finale',
+    fasi: [
+      {id:'gironi', nome:'Gironi', tipo:'gironi', qualificate:2,
+        gironi:['A','B','C','D'].map(g=>creaGirone('F', g, SQUADRE.f2x2[g]))},
+      {id:'finale', nome:'Fase finale', tipo:'bracket', rounds:[
+        {nome:'Quarti', partite:[
+          {id:'FQ-1', a:{t:'pos', g:'A', pos:1}, b:{t:'pos', g:'B', pos:2}},
+          {id:'FQ-2', a:{t:'pos', g:'C', pos:1}, b:{t:'pos', g:'D', pos:2}},
+          {id:'FQ-3', a:{t:'pos', g:'B', pos:1}, b:{t:'pos', g:'A', pos:2}},
+          {id:'FQ-4', a:{t:'pos', g:'D', pos:1}, b:{t:'pos', g:'C', pos:2}},
+        ]},
+        {nome:'Semifinali', partite:[
+          {id:'FS-1', a:{t:'vinc', ref:'FQ-1'}, b:{t:'vinc', ref:'FQ-2'}},
+          {id:'FS-2', a:{t:'vinc', ref:'FQ-3'}, b:{t:'vinc', ref:'FQ-4'}},
+        ]},
+        {nome:'Finali', partite:[
+          {id:'FF-1', a:{t:'vinc', ref:'FS-1'}, b:{t:'vinc', ref:'FS-2'}, titolo:'Finale 1°/2°'},
+          {id:'FF-2', a:{t:'perd', ref:'FS-1'}, b:{t:'perd', ref:'FS-2'}, titolo:'Finale 3°/4°'},
+        ]},
+      ]},
+    ],
+    podio:{ oro:{t:'vinc',ref:'FF-1'}, argento:{t:'perd',ref:'FF-1'}, bronzo:{t:'vinc',ref:'FF-2'} },
+  },
+  {
+    id:'q4x4', nome:'4×4 Maschile', date:'12–13 Agosto', partecipanti:'12 squadre',
+    formula:'3 gironi da 4 + fase finale (2 migliori terze ripescate)',
+    fasi: [
+      {id:'gironi', nome:'Gironi', tipo:'gironi', qualificate:2, terze:2,
+        gironi:['A','B','C'].map(g=>creaGirone('Q', g, SQUADRE.q4x4[g]))},
+      {id:'finale', nome:'Fase finale', tipo:'bracket', rounds:[
+        {nome:'Quarti', partite:[
+          {id:'QQ-1', a:{t:'pos', g:'A', pos:1}, b:{t:'terza', rank:2}},
+          {id:'QQ-2', a:{t:'pos', g:'B', pos:2}, b:{t:'pos', g:'C', pos:2}},
+          {id:'QQ-3', a:{t:'pos', g:'B', pos:1}, b:{t:'terza', rank:1}},
+          {id:'QQ-4', a:{t:'pos', g:'C', pos:1}, b:{t:'pos', g:'A', pos:2}},
+        ]},
+        {nome:'Semifinali', partite:[
+          {id:'QS-1', a:{t:'vinc', ref:'QQ-1'}, b:{t:'vinc', ref:'QQ-2'}},
+          {id:'QS-2', a:{t:'vinc', ref:'QQ-3'}, b:{t:'vinc', ref:'QQ-4'}},
+        ]},
+        {nome:'Finali', partite:[
+          {id:'QF-1', a:{t:'vinc', ref:'QS-1'}, b:{t:'vinc', ref:'QS-2'}, titolo:'Finale 1°/2°'},
+          {id:'QF-2', a:{t:'perd', ref:'QS-1'}, b:{t:'perd', ref:'QS-2'}, titolo:'Finale 3°/4°'},
+        ]},
+      ]},
+    ],
+    podio:{ oro:{t:'vinc',ref:'QF-1'}, argento:{t:'perd',ref:'QF-1'}, bronzo:{t:'vinc',ref:'QF-2'} },
+  },
+  {
+    id:'x2x2', nome:'2×2 Misto', date:'22–23 Agosto', partecipanti:'32 coppie',
+    formula:'Doppia eliminazione (vincenti / perdenti)',
+    fasi: creaDoppiaEliminazione('X', SQUADRE.x2x2),
+    podio:{ oro:{t:'vinc',ref:'XF1-1'}, argento:{t:'perd',ref:'XF1-1'}, bronzo:{t:'perd',ref:'XP7-1'} },
+  },
+];
+
+/* ================= RISOLUZIONE RISULTATI ================= */
+
+// indice globale id → partita, e id → evento
+const INDICE = {};
+EVENTI.forEach(ev=>{
+  ev.fasi.forEach(f=>{
+    const tutte = f.tipo==='gironi' ? f.gironi.flatMap(g=>g.partite) : f.rounds.flatMap(r=>r.partite);
+    tutte.forEach(p=>{ INDICE[p.id] = {partita:p, evento:ev}; });
+  });
+});
+
+// interpreta il punteggio "21-15 21-18" → {setA, setB, ptA, ptB, valido}
+function leggiPunteggio(p){
+  if(!p) return null;
+  const sets = String(p).trim().split(/[\s,;]+/).filter(Boolean);
+  let setA=0, setB=0, ptA=0, ptB=0;
+  for(const s of sets){
+    const m = s.match(/^(\d+)\s*[-–:]\s*(\d+)$/);
+    if(!m) return null;
+    const a=+m[1], b=+m[2];
+    ptA+=a; ptB+=b;
+    if(a>b) setA++; else if(b>a) setB++;
+  }
+  if(setA===setB) return null; // pareggio: risultato incompleto
+  return {setA, setB, ptA, ptB, sets};
+}
+
+// la partita è in corso se il punteggio inizia con "LIVE" (es. "LIVE" o "LIVE 15-12")
+function liveDi(id){
+  const r = RISULTATI[id];
+  return !!(r && /^live/i.test(String(r.p || '').trim()));
+}
+// parziali di una partita live: ["15-12", ...]
+function setsLiveDi(id){
+  const r = RISULTATI[id];
+  if(!r) return [];
+  return String(r.p).replace(/^\s*live/i,'').trim()
+    .split(/[\s,;]+/).filter(s=>/^\d+[-–:]\d+$/.test(s));
+}
+
+function risultatoDi(id){
+  const r = RISULTATI[id];
+  if(!r || liveDi(id)) return null;
+  const q = leggiPunteggio(r.p);
+  if(!q) return null;
+  return {...q, vincitore: q.setA>q.setB ? 'A' : 'B'};
+}
+
+// classifica di un girone: [{nome, v, g, ds, dp, completa?}]
+function classificaGirone(girone){
+  const st = {};
+  girone.squadre.forEach(n=>{ st[n]={nome:n, v:0, g:0, sv:0, sp:0, pv:0, pp:0}; });
+  let completa = true;
+  girone.partite.forEach(p=>{
+    const r = risultatoDi(p.id);
+    if(!r){ completa=false; return; }
+    const A=st[p.a.n], B=st[p.b.n];
+    A.g++; B.g++;
+    A.sv+=r.setA; A.sp+=r.setB; B.sv+=r.setB; B.sp+=r.setA;
+    A.pv+=r.ptA; A.pp+=r.ptB;   B.pv+=r.ptB; B.pp+=r.ptA;
+    if(r.vincitore==='A') A.v++; else B.v++;
+  });
+  const ord = Object.values(st).sort((x,y)=>
+    y.v - x.v || (y.sv-y.sp)-(x.sv-x.sp) || (y.pv-y.pp)-(x.pv-x.pp) || x.nome.localeCompare(y.nome));
+  ord.completa = completa;
+  return ord;
+}
+
+// trova la fase gironi dell'evento che contiene una certa lettera di girone
+function faseGironiDi(evento){ return evento.fasi.find(f=>f.tipo==='gironi'); }
+
+// risolve un lato di partita → {nome, definito}
+function risolviLato(lato, evento){
+  if(lato.t==='sq')   return {nome:lato.n, definito:true};
+  if(lato.t==='vinc' || lato.t==='perd'){
+    const rif = INDICE[lato.ref];
+    const r = risultatoDi(lato.ref);
+    if(r){
+      const vogl = lato.t==='vinc' ? r.vincitore : (r.vincitore==='A'?'B':'A');
+      const lato2 = vogl==='A' ? rif.partita.a : rif.partita.b;
+      const ris = risolviLato(lato2, rif.evento);
+      if(ris.definito) return ris;
+    }
+    return {nome:`${lato.t==='vinc'?'Vinc.':'Perd.'} ${lato.ref}`, definito:false};
+  }
+  if(lato.t==='pos'){
+    const fg = faseGironiDi(evento);
+    const g = fg.gironi.find(x=>x.lettera===lato.g);
+    const cl = classificaGirone(g);
+    if(cl.completa) return {nome:cl[lato.pos-1].nome, definito:true};
+    return {nome:`${lato.pos}° Girone ${lato.g}`, definito:false};
+  }
+  if(lato.t==='terza'){
+    const fg = faseGironiDi(evento);
+    const terze = [];
+    let tutte = true;
+    fg.gironi.forEach(g=>{
+      const cl = classificaGirone(g);
+      if(!cl.completa) tutte = false;
+      else terze.push(cl[2]);
+    });
+    if(tutte){
+      terze.sort((x,y)=> y.v-x.v || (y.sv-y.sp)-(x.sv-x.sp) || (y.pv-y.pp)-(x.pv-x.pp));
+      return {nome:terze[lato.rank-1].nome, definito:true};
+    }
+    return {nome:`${lato.rank}ª migliore terza`, definito:false};
+  }
+  return {nome:'—', definito:false};
+}
+
+/* ================= RENDERING ================= */
+
+const $ = sel => document.querySelector(sel);
+let eventoAttivo = EVENTI[0].id;
+const faseAttiva = {}; // id evento → id fase
+EVENTI.forEach(ev=>{ faseAttiva[ev.id] = ev.fasi[0].id; });
+
+function esc(s){ return String(s).replace(/[&<>"]/g, c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c])); }
+
+function htmlPartita(p, evento){
+  const r = risultatoDi(p.id);
+  const live = liveDi(p.id);
+  const voce = RISULTATI[p.id] || {};
+  const A = risolviLato(p.a, evento), B = risolviLato(p.b, evento);
+  const sets = r ? r.sets : (live ? setsLiveDi(p.id) : []);
+  const setsA = sets.map(s=>s.split(/[-–:]/)[0]).join(' ');
+  const setsB = sets.map(s=>s.split(/[-–:]/)[1]).join(' ');
+  const dove = [voce.c, voce.o].filter(Boolean).join(' · ');
+  return `<div class="partita ${live?'live':''}">
+    <div class="codice"><span>${esc(p.titolo || p.id)}${live?' <span class="live-tag">● LIVE</span>':''}</span><span class="dove">${esc(dove)}</span></div>
+    <div class="riga-squadra ${r && r.vincitore==='A' ? 'vincente':''}">
+      <span class="nome ${A.definito?'':'tbd'}">${esc(A.nome)}</span><span class="set">${setsA}</span>
+    </div>
+    <div class="riga-squadra ${r && r.vincitore==='B' ? 'vincente':''}">
+      <span class="nome ${B.definito?'':'tbd'}">${esc(B.nome)}</span><span class="set">${setsB}</span>
+    </div>
+  </div>`;
+}
+
+function htmlBracket(fase, evento){
+  return `<div class="bracket">` + fase.rounds.map(r=>`
+    <div class="round">
+      <h4>${esc(r.nome)}</h4>
+      <div class="partite">${r.partite.map(p=>htmlPartita(p, evento)).join('')}</div>
+    </div>`).join('') + `</div>`;
+}
+
+function htmlGironi(fase, evento){
+  const blocchi = fase.gironi.map(g=>{
+    const cl = classificaGirone(g);
+    const righe = cl.map((s,i)=>`
+      <tr class="${i < fase.qualificate ? 'qualificata':''}">
+        <td>${esc(s.nome)}</td>
+        <td class="num">${s.v}</td>
+        <td class="num">${s.g}</td>
+        <td class="num">${s.pv-s.pp>0?'+':''}${s.pv-s.pp}</td>
+      </tr>`).join('');
+    const partite = g.partite.map(p=>{
+      const r = risultatoDi(p.id);
+      const vs = r
+        ? `<b>${r.vincitore==='A'?'▸ ':''}${esc(p.a.n)}</b> – <b>${r.vincitore==='B'?'▸ ':''}${esc(p.b.n)}</b>`
+        : `${esc(p.a.n)} – ${esc(p.b.n)}`;
+      return `<div class="pg"><span class="vs">${vs}</span><span class="mono">${r ? esc(r.sets.join(' · ')) : p.id}</span></div>`;
+    }).join('');
+    return `<div class="girone">
+      <h4>${esc(g.nome)}</h4>
+      <table>
+        <thead><tr><th>Squadra</th><th class="num">V</th><th class="num">G</th><th class="num">±Pt</th></tr></thead>
+        <tbody>${righe}</tbody>
+      </table>
+      <div class="partite-girone">${partite}</div>
+    </div>`;
+  }).join('');
+  const nota = fase.terze
+    ? `Si qualificano le prime ${fase.qualificate} di ogni girone (banda gialla) + le ${fase.terze} migliori terze.`
+    : `Si qualificano le prime ${fase.qualificate} di ogni girone (banda gialla).`;
+  return `<div class="griglia-gironi">${blocchi}</div><p class="legenda-gironi">V = vittorie · G = giocate · ±Pt = differenza punti. ${nota} Le partite senza risultato mostrano il proprio codice.</p>`;
+}
+
+function renderTabs(){
+  $('#tabs-eventi').innerHTML = EVENTI.map(ev=>`
+    <button role="tab" aria-selected="${ev.id===eventoAttivo}" data-evento="${ev.id}">
+      ${esc(ev.nome)}
+    </button>`).join('');
+}
+
+/* ---------- programma: partite in ordine di orario ---------- */
+function tutteLePartite(ev){
+  return ev.fasi.flatMap(f=> f.tipo==='gironi'
+    ? f.gironi.flatMap(g=>g.partite)
+    : f.rounds.flatMap(r=>r.partite));
+}
+// chiave di ordinamento per orari tipo "10:30" o "SAB 10:30" / "DOM 09.00"
+const ORDINE_GIORNI = {VEN:0, SAB:1, DOM:2, LUN:3, MAR:4, MER:5, GIO:6};
+function chiaveOrario(o){
+  const m = String(o).trim().toUpperCase().match(/^([A-ZÀ-Ù]{3})?\s*(\d{1,2})[:.](\d{2})/);
+  if(!m) return [9, String(o)];
+  const g = (m[1] && ORDINE_GIORNI[m[1]]!==undefined) ? ORDINE_GIORNI[m[1]] : 0;
+  return [g, m[2].padStart(2,'0') + ':' + m[3]];
+}
+
+function htmlProgramma(ev){
+  const righe = tutteLePartite(ev)
+    .map(p=>({p, voce:RISULTATI[p.id]}))
+    .filter(x=>x.voce && x.voce.o)
+    .sort((x,y)=>{
+      const a = chiaveOrario(x.voce.o), b = chiaveOrario(y.voce.o);
+      return a[0]-b[0] || String(a[1]).localeCompare(String(b[1]));
+    });
+  if(!righe.length) return `<p class="vuoto-prog">Nessun orario pubblicato per ora. Aggiungi le colonne <b>orario</b> e <b>campo</b> al foglio Google (o all'oggetto RISULTATI) e le partite compariranno qui in ordine di gioco.</p>`;
+  return `<div class="programma">` + righe.map(({p, voce})=>{
+    const A = risolviLato(p.a, ev), B = risolviLato(p.b, ev);
+    const r = risultatoDi(p.id), live = liveDi(p.id);
+    let stato;
+    if(live){
+      const sl = setsLiveDi(p.id);
+      stato = `<span class="stato live-tag">● LIVE${sl.length ? ' ' + esc(sl.join(' · ')) : ''}</span>`;
+    } else if(r){
+      stato = `<span class="stato mono">${esc(r.sets.join(' · '))}</span>`;
+    } else {
+      stato = `<span class="stato mono in-attesa">${esc(p.id)}</span>`;
+    }
+    return `<div class="riga-prog ${live?'live':''}">
+      <span class="quando mono">${esc(voce.o)}</span>
+      <span class="campo">${voce.c ? esc(voce.c) : ''}</span>
+      <span class="chi-gioca">${esc(A.nome)} <i>vs</i> ${esc(B.nome)}</span>
+      ${stato}
+    </div>`;
+  }).join('') + `</div>`;
+}
+
+/* ---------- albo d'oro ---------- */
+function renderAlbo(){
+  $('#griglia-albo').innerHTML = EVENTI.map(ev=>{
+    const medaglie = [['🥇','oro'],['🥈','argento'],['🥉','bronzo']].map(([ico, k])=>{
+      const ris = risolviLato(ev.podio[k], ev);
+      return `<div class="medaglia ${ris.definito ? k : 'da-assegnare'}">
+        <span class="ico">${ico}</span><span>${ris.definito ? esc(ris.nome) : 'Da assegnare'}</span>
+      </div>`;
+    }).join('');
+    return `<div class="podio-card">
+      <h3>${esc(ev.nome)}</h3>
+      <p class="quando-podio mono">${esc(ev.date)}</p>
+      ${medaglie}
+    </div>`;
+  }).join('');
+}
+
+function renderPannello(){
+  const ev = EVENTI.find(e=>e.id===eventoAttivo);
+  const faseId = faseAttiva[ev.id];
+  const subtabs = `<div class="subtabs" role="tablist" aria-label="Fase">` + ev.fasi.map(f=>`
+    <button role="tab" aria-selected="${f.id===faseId}" data-fase="${f.id}">${esc(f.nome)}</button>`).join('')
+    + `<button role="tab" aria-selected="${faseId==='programma'}" data-fase="programma">🕐 Programma</button></div>`;
+  let corpo;
+  if(faseId==='programma'){
+    corpo = htmlProgramma(ev);
+  } else {
+    const fase = ev.fasi.find(f=>f.id===faseId) || ev.fasi[0];
+    corpo = fase.tipo==='gironi' ? htmlGironi(fase, ev) : htmlBracket(fase, ev);
+  }
+  $('#pannello-evento').innerHTML = subtabs + corpo;
+}
+
+function renderEventiCards(){
+  $('#griglia-eventi').innerHTML = EVENTI.map(ev=>`
+    <div class="carta-evento">
+      <h3>${esc(ev.nome)}</h3>
+      <div class="dato"><span>Date</span><b>${esc(ev.date)}</b></div>
+      <div class="dato"><span>Partecipanti</span><b>${esc(ev.partecipanti)}</b></div>
+      <div class="dato"><span>Formula</span><b style="text-align:right">${esc(ev.formula)}</b></div>
+      <a class="vai" href="#tabelloni" data-vai-evento="${ev.id}">Vai al tabellone →</a>
+    </div>`).join('');
+}
+
+function renderTutto(){ renderTabs(); renderPannello(); }
+
+/* ---------- interazioni ---------- */
+document.addEventListener('click', e=>{
+  const tab = e.target.closest('[data-evento]');
+  if(tab){ eventoAttivo = tab.dataset.evento; renderTutto(); return; }
+  const sub = e.target.closest('[data-fase]');
+  if(sub){ faseAttiva[eventoAttivo] = sub.dataset.fase; renderPannello(); return; }
+  const vai = e.target.closest('[data-vai-evento]');
+  if(vai){ eventoAttivo = vai.dataset.vaiEvento; renderTutto(); }
+});
+
+/* ================= GOOGLE SHEETS ================= */
+
+// legge il CSV pubblicato: intestazioni "id, punteggio, orario, campo"
+// (l'ordine delle colonne è libero; orario e campo sono facoltativi)
+function analizzaCSV(testo){
+  const righe = testo.trim().split(/\r?\n/).map(r=>r.split(',').map(c=>c.replace(/^"|"$/g,'').trim()));
+  if(righe.length < 2) return {};
+  const intest = righe[0].map(c=>c.toLowerCase());
+  const iId = intest.indexOf('id'),
+        iP  = intest.findIndex(c=>c.startsWith('punteggio')),
+        iO  = intest.findIndex(c=>c.startsWith('orario')),
+        iC  = intest.findIndex(c=>c.startsWith('campo'));
+  if(iId<0) return {};
+  const out = {};
+  righe.slice(1).forEach(r=>{
+    const id = r[iId];
+    if(!id || !INDICE[id]) return;
+    const voce = {};
+    if(iP>=0 && r[iP]) voce.p = r[iP];
+    if(iO>=0 && r[iO]) voce.o = r[iO];
+    if(iC>=0 && r[iC]) voce.c = r[iC];
+    if(Object.keys(voce).length) out[id] = voce;
+  });
+  return out;
+}
+
+async function aggiornaDaFoglio(){
+  try{
+    const resp = await fetch(FOGLIO_GOOGLE + (FOGLIO_GOOGLE.includes('?')?'&':'?') + 'nocache=' + Date.now());
+    if(!resp.ok) throw new Error(resp.status);
+    RISULTATI = analizzaCSV(await resp.text());
+    renderPannello();
+    renderAlbo();
+    const ora = new Date().toLocaleTimeString('it-IT', {hour:'2-digit', minute:'2-digit'});
+    $('#nota-aggiornamento').textContent = `Live · aggiornato alle ${ora}`;
+    $('#pallino-live').classList.add('attivo');
+  }catch(err){
+    $('#nota-aggiornamento').textContent = 'Collegamento al foglio non riuscito — mostro gli ultimi dati disponibili';
+    console.error('Errore lettura foglio:', err);
+  }
+}
+
+/* ================= SHOP: PANTALONCINI 3D ================= */
+/* Ogni card con [data-viewer3d="chiave"] diventa un modello 3D girevole.
+   Le texture (gamba destra = grafica, gamba sinistra = sponsor) sono in
+   tessuti-3d.js, incorporate in base64: il 3D funziona anche in locale.
+   Se Three.js o le texture non sono disponibili, resta la foto. */
+
+// rotazione iniziale delle gambe: porta il "FRONTE" del cartamodello verso chi guarda
+// 🔧 se fronte e retro risultano invertiti, scambia i due segni
+const FRONTE_AVANTI = { dx: Math.PI/2, sx: -Math.PI/2 };
+// colore dell'elastico in vita per ogni kit
+const VITA_3D = { drago:0x0D2A43, onda:0x14243E, fenice:0x241B18 };
+
+function avviaViewer3D(box){
+  const img = box.querySelector('img');
+  const chiave = box.dataset.viewer3d;
+  const tess = (typeof TESSUTI_3D !== 'undefined') ? TESSUTI_3D[chiave] : null;
+  if(!img || !tess || typeof THREE === 'undefined') return;  // resta la foto
+
+  const carica = src => new Promise((ok, no)=>{
+    const im = new Image();
+    im.onload = ()=>ok(im); im.onerror = no;
+    im.src = src;
+  });
+
+  Promise.all([carica(tess.dx), carica(tess.sx)]).then(([imDx, imSx])=>{
+    try{
+      const materiale = (im) => {
+        const c = document.createElement('canvas');
+        c.width = 1024; c.height = 1024;
+        c.getContext('2d').drawImage(im, 0, 0, 1024, 1024);
+        const t = new THREE.CanvasTexture(c);
+        t.anisotropy = 4;
+        return new THREE.MeshLambertMaterial({map:t, side:THREE.DoubleSide});
+      };
+      const matDx = materiale(imDx);
+      const matSx = materiale(imSx);
+      const matScuro = new THREE.MeshLambertMaterial({color:VITA_3D[chiave] ?? 0x0D2A43, side:THREE.DoubleSide});
+
+      const scena = new THREE.Scene();
+      const camera = new THREE.PerspectiveCamera(35, 1, .1, 100);
+      camera.position.set(0, .35, 7.2);
+      camera.lookAt(0, -.15, 0);
+
+      const renderer = new THREE.WebGLRenderer({antialias:true, alpha:true});
+      renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
+      const ridimensiona = () => { const s = box.clientWidth || 300; renderer.setSize(s, s); };
+      ridimensiona();
+      window.addEventListener('resize', ridimensiona);
+
+      box.appendChild(renderer.domElement);
+      img.style.display = 'none';
+      box.classList.add('attiva-3d');
+
+      scena.add(new THREE.AmbientLight(0xffffff, .9));
+      const luce = new THREE.DirectionalLight(0xffffff, .45);
+      luce.position.set(2, 3, 4);
+      scena.add(luce);
+
+      const gruppo = new THREE.Group();
+
+      // gamba: cilindro svasato aperto in fondo (lato: +1 destra, -1 sinistra)
+      const gamba = (mat, lato, chiave) => {
+        const geo = new THREE.CylinderGeometry(.78, .96, 2.3, 48, 1, true);
+        const m = new THREE.Mesh(geo, mat);
+        m.position.set(lato*.60, -.62, 0);
+        m.rotation.z = -lato*.10;               // gambe leggermente divaricate
+        m.rotation.y = FRONTE_AVANTI[chiave];   // fronte del cartamodello in avanti
+        return m;
+      };
+      gruppo.add(gamba(matDx, +1, 'dx'));
+      gruppo.add(gamba(matSx, -1, 'sx'));
+
+      // fascia in vita (elastico scuro) + chiusura superiore
+      const fascia = new THREE.Mesh(new THREE.CylinderGeometry(1.0, 1.04, .42, 48, 1, true), matScuro);
+      fascia.position.y = .70; fascia.scale.set(1.45, 1, .82);
+      gruppo.add(fascia);
+      const tappo = new THREE.Mesh(new THREE.CircleGeometry(1.0, 48), matScuro);
+      tappo.rotation.x = -Math.PI/2; tappo.position.y = .90; tappo.scale.set(1.45, .82, 1);
+      gruppo.add(tappo);
+
+      gruppo.rotation.x = -.06;
+      scena.add(gruppo);
+
+      // interazione: trascina per ruotare; rotazione automatica finché non tocchi
+      let ruotaAuto = true, punta = null, inclinazione = -.06;
+      box.addEventListener('pointerdown', e=>{
+        punta = {x:e.clientX, y:e.clientY};
+        ruotaAuto = false;
+        box.classList.add('trascinando');
+        e.preventDefault();
+      });
+      window.addEventListener('pointermove', e=>{
+        if(!punta) return;
+        gruppo.rotation.y += (e.clientX - punta.x) * .012;
+        inclinazione = Math.max(-.6, Math.min(.6, inclinazione + (e.clientY - punta.y) * .006));
+        punta = {x:e.clientX, y:e.clientY};
+      });
+      window.addEventListener('pointerup', ()=>{ punta = null; box.classList.remove('trascinando'); });
+
+      (function anima(){
+        requestAnimationFrame(anima);
+        if(ruotaAuto) gruppo.rotation.y += .006;
+        gruppo.rotation.x += (inclinazione - gruppo.rotation.x) * .15;
+        renderer.render(scena, camera);
+      })();
+    }catch(err){
+      console.error('Visualizzatore 3D non disponibile:', err);
+      box.querySelectorAll('canvas').forEach(c=>c.remove());
+      box.classList.remove('attiva-3d');
+      img.style.display = '';  // torna la foto
+    }
+  }).catch(()=>{ /* texture non caricate: resta la foto */ });
+}
+
+/* ---------- avvio ---------- */
+renderEventiCards();
+renderTutto();
+renderAlbo();
+document.querySelectorAll('[data-viewer3d]').forEach(avviaViewer3D);
+if(FOGLIO_GOOGLE){
+  aggiornaDaFoglio();
+  setInterval(aggiornaDaFoglio, AGGIORNA_OGNI_SECONDI*1000);
+}
+
+/* ---------- PWA: service worker (funziona solo su https, es. GitHub Pages) ---------- */
+if('serviceWorker' in navigator && (location.protocol==='https:' || location.hostname==='localhost')){
+  navigator.serviceWorker.register('sw.js').catch(()=>{ /* facoltativo: se manca sw.js il sito funziona lo stesso */ });
+}
+</script>
+</body>
+</html>
