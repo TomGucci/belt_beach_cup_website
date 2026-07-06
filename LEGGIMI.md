@@ -39,6 +39,9 @@ La partita si evidenzia in corallo con pallino pulsante, sia nel tabellone che n
 ### Orario e campo
 Ogni partita può avere un orario e un campo (facoltativi): compaiono sulla chip nel tabellone e alimentano il tab **🕐 Programma**, che elenca le partite dell'evento in ordine di gioco. Formato orario: `10:30` oppure con giorno `SAB 10:30` / `DOM 09:00` (l'ordinamento riconosce VEN/SAB/DOM/LUN/MAR/MER/GIO).
 
+### Provare il foglio in locale
+Aprendo `index.html` col doppio clic (`file://`) il browser **blocca la lettura del foglio Google** ("Collegamento al foglio non riuscito"). Non è un errore tuo: online funziona. Per provare in locale fai doppio clic su **`avvia-sito.bat`**: apre il sito su `http://localhost:8765`, dove il foglio si carica normalmente. (Non caricare `avvia-sito.bat` e `serve.ps1` quando pubblichi: servono solo in locale.)
+
 ### Modo B — Google Sheets (consigliato durante il torneo)
 1. Crea un foglio Google con colonne intestate: `id` | `punteggio` | `orario` | `campo` (le ultime due facoltative)
 2. Menu **File → Condividi → Pubblica sul web**, scegli il foglio e il formato **CSV**, copia l'URL.
@@ -53,6 +56,9 @@ Esempio di foglio:
 | MV1-1  | 21-15 21-18  | SAB 09:00 | Campo 1 |
 | MV1-2  | LIVE 15-12   | SAB 09:00 | Campo 2 |
 | MV1-3  |              | SAB 10:30 | Campo 1 |
+
+### Cerca la tua squadra
+Sopra i tabelloni c'è un campo di ricerca: scrivendo almeno 2 lettere del nome, il sito evidenzia in giallo tutte le partite della squadra (tabelloni, gironi e programma), passa automaticamente all'evento giusto e mostra un riquadro con la **prossima partita** (avversario, orario e campo, se pubblicati) o "in campo ora" se sta giocando. Funziona con i nomi reali che inserirai in `SQUADRE`.
 
 ## 3. Formule implementate
 
@@ -73,19 +79,17 @@ Il sito è installabile come app sul telefono ("Aggiungi a schermata Home"): ser
 
 - `manifest.webmanifest` — nome, colori e icone dell'app
 - `sw.js` — service worker "prima la rete": risultati sempre freschi, ma il sito si apre anche senza connessione mostrando l'ultima copia
-- `icon-192.png`, `icon-512.png` — icone (sostituibili con il vostro logo, stesse dimensioni)
-- `grafica-*.jpg` — immagini dello shop · `tessuti-3d.js` — texture dei pantaloncini 3D · `mappa_belt.png` — mappa della location
+- `icon-192.png`, `icon-512.png` — icone con il drago (favicon e app)
+- `copertina.jpg` — anteprima social 1200×630 (drago + titolo)
+- `grafica-*.jpg` — immagini dello shop · `mappa_belt.png` — mappa della location
 
-L'anteprima social (link condiviso su WhatsApp) usa i meta tag `og:` in cima a `index.html`: quando il sito è online, sostituisci `og:image` con l'URL assoluto di una foto orizzontale del torneo.
+L'anteprima social (link condiviso su WhatsApp) usa `copertina.jpg` via i meta tag `og:` in cima a `index.html`. **Quando il sito è online**, cambia il valore di `og:image` nell'URL assoluto (es. `https://tuonome.github.io/nomerepo/copertina.jpg`): molte app non caricano le anteprime con percorso relativo.
 
-## 6. Pantaloncini 3D nello shop
+## 6. Grafiche dello shop
 
-Le tre card dei pantaloncini (Drago, Onda, Fenice) mostrano un **modello 3D girevole** costruito dalle grafiche di stampa: pannello grafico sulla gamba destra, pannello sponsor sulla sinistra, elastico in vita scuro. Si trascina col dito/mouse per ruotare (rotazione automatica finché non si tocca). I top (Onda, Sakura) restano come immagini.
+Le 5 card dello shop mostrano le grafiche di stampa dei kit (`grafica-*.jpg`, estratte da `grafiche_pantaloncini_top_belt.pdf`): tre pantaloncini (Drago, Onda, Fenice) e due top (Onda, Sakura). Se cambi una grafica, sostituisci il file jpg corrispondente mantenendo lo stesso nome.
 
-Note pratiche:
-- Le texture 3D sono **incorporate in `tessuti-3d.js`** (base64): il 3D funziona anche aprendo `index.html` con doppio clic, senza server. Tieni il file nella stessa cartella di `index.html`.
-- Three.js arriva da CDN: se irraggiungibile (o se manca `tessuti-3d.js`), le card mostrano semplicemente la foto. Nessun errore.
-- Le immagini dello shop sono i file `grafica-*.jpg`, estratti da `grafiche_pantaloncini_top_belt.pdf`. Se cambi le grafiche, rigenera sia le immagini sia `tessuti-3d.js` (due jpeg per pantaloncino — pannello destro e sinistro — come data-URI base64 nell'oggetto `TESSUTI_3D`). Se fronte e retro risultano invertiti, scambia i segni in `FRONTE_AVANTI`.
+I file `tessuti-3d.js` e `pantaloncino.jpeg` non sono più usati dal sito: puoi cancellarli (e non serve caricarli online).
 
 ## 7. Pubblicazione gratuita
 

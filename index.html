@@ -3,20 +3,22 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>BELT Beach Cup 2026 — Torneo di Beach Volley</title>
+<title>BELT Beach Cup 2026 · Torneo di Beach Volley</title>
 <meta name="description" content="BELT Beach Cup 2026: tre weekend di beach volley ad Agosto. Tabelloni live, risultati, gironi, merch e info.">
 
 <!-- Anteprima social (WhatsApp, Instagram, Telegram...) -->
 <meta property="og:title" content="BELT Beach Cup 2026">
 <meta property="og:description" content="Tre weekend di beach volley ad Agosto: tabelloni live, gironi, finali e merch ufficiale.">
 <meta property="og:type" content="website">
-<!-- 🔧 quando il sito è online, sostituisci con l'URL ASSOLUTO di una foto orizzontale del torneo (min 1200×630), es. https://tuosito/copertina.jpg -->
-<meta property="og:image" content="icon-512.png">
-<meta name="twitter:card" content="summary">
+<!-- 🔧 quando il sito è online, metti qui l'URL ASSOLUTO, es. https://tuonome.github.io/nomerepo/copertina.jpg -->
+<meta property="og:image" content="copertina.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
 
 <!-- Icona e PWA -->
 <meta name="theme-color" content="#0D2A43">
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%230D2A43'/><circle cx='50' cy='52' r='26' fill='%23FFB92E'/><path d='M18 86h64' stroke='%23F3E7CF' stroke-width='9' stroke-linecap='round'/></svg>">
+<link rel="icon" href="icon-192.png" type="image/png">
 <link rel="apple-touch-icon" href="icon-192.png">
 <link rel="manifest" href="manifest.webmanifest">
 
@@ -76,13 +78,14 @@ img{ max-width:100%; display:block; }
 }
 .nav-logo{
   font-family:var(--f-display); font-size:1.25rem; text-transform:uppercase;
-  text-decoration:none; letter-spacing:.02em;
+  text-decoration:none; letter-spacing:.02em; white-space:nowrap; flex-shrink:0;
 }
 .nav-logo em{ font-style:normal; color:var(--mare); }
-.nav-links{ margin-left:auto; display:flex; gap:.2rem; flex-wrap:wrap; }
+.nav-links{ margin-left:auto; display:flex; gap:.2rem; flex-wrap:nowrap; overflow-x:auto; scrollbar-width:none; }
+.nav-links::-webkit-scrollbar{ display:none; }
 .nav-links a{
   text-decoration:none; font-size:.78rem; font-weight:600; letter-spacing:.1em;
-  text-transform:uppercase; padding:.45rem .7rem; border-radius:999px;
+  text-transform:uppercase; padding:.45rem .7rem; border-radius:999px; white-space:nowrap;
   transition:background .15s ease;
 }
 .nav-links a:hover{ background:rgba(14,134,181,.12); }
@@ -120,15 +123,16 @@ img{ max-width:100%; display:block; }
   padding:.7rem 1.1rem .8rem; min-width:150px;
   box-shadow:0 4px 0 var(--notte);
   text-decoration:none;
-  transition:transform .15s ease;
+  transition:transform .15s ease, box-shadow .15s ease;
 }
-.bandiera:hover{ transform:translateY(-3px); }
+.bandiera:hover{ transform:translateY(-3px); box-shadow:0 7px 0 var(--notte); }
+.bandiera:active{ transform:translateY(1px); box-shadow:0 2px 0 var(--notte); }
 .bandiera .quando{ font-family:var(--f-mono); font-weight:600; font-size:.8rem; color:var(--mare-scuro); }
 .bandiera .cosa{ font-family:var(--f-display); font-size:1.15rem; text-transform:uppercase; }
 .bandiera .chi{ font-size:.75rem; font-weight:600; letter-spacing:.06em; text-transform:uppercase; color:var(--corallo); }
 
 /* ---------- sezioni ---------- */
-section{ padding:3.5rem 1.2rem; }
+section{ padding:clamp(3.5rem, 8vw, 5.25rem) 1.2rem; scroll-margin-top:4.5rem; }
 .contenitore{ max-width:1080px; margin:0 auto; }
 .titolo-sezione{ font-size:clamp(2rem,5vw,3rem); margin:.2rem 0 1.6rem; }
 section + section{ border-top:3px double var(--notte); }
@@ -140,16 +144,32 @@ section + section{ border-top:3px double var(--notte); }
   padding:1.4rem; box-shadow:0 5px 0 var(--notte);
   display:flex; flex-direction:column; gap:.55rem;
 }
+.carta-evento, .podio-card, .prodotto{ transition:transform .18s ease, box-shadow .18s ease; }
+.carta-evento:hover, .podio-card:hover, .prodotto:hover{ transform:translateY(-3px); box-shadow:0 8px 0 var(--notte); }
 .carta-evento h3{ font-family:var(--f-display); font-size:1.6rem; text-transform:uppercase; }
+.carta-evento .testata{ display:flex; align-items:flex-start; justify-content:space-between; gap:.6rem; }
+
+/* badge mascotte dei kit (ritagli dalle grafiche ufficiali) */
+.badge-kit{
+  width:46px; height:46px; border-radius:50%; object-fit:cover; flex:none;
+  border:2px solid var(--notte); background:var(--bianco);
+}
+.bandiera .badge-kit{
+  position:absolute; top:-16px; right:-12px; width:42px; height:42px;
+  box-shadow:0 2px 0 var(--notte);
+}
+.bandiera{ position:relative; }
 .carta-evento .dato{ display:flex; justify-content:space-between; gap:1rem; font-size:.92rem; border-bottom:1px solid var(--linea); padding:.3rem 0; }
 .carta-evento .dato b{ font-family:var(--f-mono); font-weight:600; }
 .carta-evento .vai{
   margin-top:auto; align-self:flex-start;
   font-size:.78rem; font-weight:700; letter-spacing:.12em; text-transform:uppercase;
-  text-decoration:none; color:var(--bianco); background:var(--mare);
+  text-decoration:none; color:var(--bianco); background:var(--mare-scuro);
   padding:.55rem .9rem; border-radius:999px;
+  transition:background .15s ease, transform .12s ease;
 }
-.carta-evento .vai:hover{ background:var(--mare-scuro); }
+.carta-evento .vai:hover{ background:var(--notte); }
+.carta-evento .vai:active{ transform:translateY(1px); }
 
 /* ---------- tabelloni ---------- */
 .barra-live{ display:flex; align-items:center; gap:.7rem; flex-wrap:wrap; margin-bottom:1.2rem; }
@@ -158,6 +178,28 @@ section + section{ border-top:3px double var(--notte); }
 @keyframes batti{ 50%{ opacity:.35; } }
 .nota-agg{ font-size:.8rem; color:var(--mare-scuro); font-family:var(--f-mono); }
 
+/* ricerca squadra */
+.cerca-squadra{ margin:0 0 .9rem; }
+.cerca-squadra input{
+  font-family:var(--f-body); font-size:.95rem; font-weight:600; color:var(--notte);
+  border:2px solid var(--notte); border-radius:999px; background:var(--bianco);
+  padding:.55rem 1.1rem; width:min(360px,100%);
+}
+.cerca-squadra input:focus-visible{ outline:3px solid var(--mare); outline-offset:2px; }
+.cerca-squadra input::placeholder{ color:#5f6e7a; }
+.esito-ricerca{
+  margin:0 0 1.2rem; padding:.75rem 1rem; border:2px solid var(--notte);
+  border-radius:.6rem; background:var(--bianco); font-size:.92rem; display:grid; gap:.45rem;
+}
+.esito-ricerca .ev-nome{ color:var(--mare-scuro); font-size:.78rem; font-weight:600; }
+.esito-ricerca .in-campo{ color:var(--corallo); font-weight:700; }
+.partita.cercata{ border-color:var(--sole); box-shadow:0 0 0 2px rgba(255,185,46,.5); }
+.riga-squadra.evidenziata .nome{ color:var(--sole); }
+.riga-squadra.vincente.evidenziata .nome{ color:var(--notte); }
+.girone tr.evidenziata td{ background:#FFF3D6; }
+.girone .pg.evidenziata{ background:#FFF3D6; }
+.riga-prog.evidenziata{ border-color:var(--sole); box-shadow:0 0 0 2px rgba(255,185,46,.4); }
+
 .tabs, .subtabs{ display:flex; gap:.4rem; flex-wrap:wrap; }
 .tabs{ margin-bottom:1rem; }
 .tabs button, .subtabs button{
@@ -165,11 +207,14 @@ section + section{ border-top:3px double var(--notte); }
   text-transform:uppercase; cursor:pointer;
   border:2px solid var(--notte); background:var(--bianco); color:var(--notte);
   padding:.5rem .9rem; border-radius:999px;
+  transition:background .15s ease, transform .12s ease;
 }
+.tabs button:hover:not([aria-selected="true"]), .subtabs button:hover:not([aria-selected="true"]){ background:var(--sabbia-chiara); }
+.tabs button:active, .subtabs button:active{ transform:translateY(1px); }
 .tabs button[aria-selected="true"]{ background:var(--notte); color:var(--sole); }
 .subtabs{ margin:0 0 1.2rem; }
 .subtabs button{ border-width:1px; font-weight:600; }
-.subtabs button[aria-selected="true"]{ background:var(--mare); border-color:var(--mare); color:var(--bianco); }
+.subtabs button[aria-selected="true"]{ background:var(--mare-scuro); border-color:var(--mare-scuro); color:var(--bianco); }
 
 /* bracket a colonne, scorrevole in orizzontale */
 .bracket{
@@ -232,7 +277,7 @@ section + section{ border-top:3px double var(--notte); }
 .riga-prog .chi-gioca{ min-width:0; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
 .riga-prog .chi-gioca i{ font-style:normal; color:var(--mare-scuro); font-size:.78rem; }
 .riga-prog .stato{ font-size:.8rem; font-weight:600; white-space:nowrap; }
-.riga-prog .stato.in-attesa{ color:#9aa7b1; }
+.riga-prog .stato.in-attesa{ color:#5f6e7a; }
 .riga-prog .stato.live-tag{ color:var(--corallo); }
 .vuoto-prog{
   padding:1rem 1.1rem; border:2px dashed var(--notte); border-radius:.6rem;
@@ -256,7 +301,7 @@ section + section{ border-top:3px double var(--notte); }
 .medaglia.oro{ background:var(--sole); }
 .medaglia.argento{ background:#E8EDF1; }
 .medaglia.bronzo{ background:#F3D9C4; }
-.medaglia.da-assegnare{ background:var(--sabbia-chiara); color:#9aa7b1; font-weight:500; font-style:italic; }
+.medaglia.da-assegnare{ background:var(--sabbia-chiara); color:#6b7885; font-weight:500; font-style:italic; }
 
 /* gironi */
 .griglia-gironi{ display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:1.2rem; }
@@ -294,18 +339,6 @@ section + section{ border-top:3px double var(--notte); }
 }
 .prodotto .foto img{ width:100%; height:100%; object-fit:cover; }
 
-/* visualizzatore 3D pantaloncino */
-.foto-3d{ position:relative; touch-action:none; user-select:none; }
-.foto-3d img{ object-fit:contain !important; background:#fff; }
-.foto-3d canvas{ width:100% !important; height:100% !important; display:block; cursor:grab; }
-.foto-3d.trascinando canvas{ cursor:grabbing; }
-.suggerimento-3d{
-  position:absolute; bottom:.55rem; left:50%; transform:translateX(-50%);
-  background:rgba(13,42,67,.88); color:#fff; font-size:.62rem; font-weight:700;
-  letter-spacing:.1em; text-transform:uppercase; padding:.28rem .65rem; border-radius:999px;
-  pointer-events:none; white-space:nowrap; display:none;
-}
-.foto-3d.attiva-3d .suggerimento-3d{ display:block; }
 .prodotto .info{ padding: .9rem 1rem 1.1rem; }
 .prodotto h3{ font-family:var(--f-display); text-transform:uppercase; font-size:1.15rem; }
 .prodotto .dettagli{ font-size:.85rem; color:var(--mare-scuro); margin:.15rem 0 .5rem; }
@@ -322,8 +355,8 @@ section + section{ border-top:3px double var(--notte); }
   list-style:none; display:flex; justify-content:space-between; align-items:center; gap:1rem;
 }
 .regola summary::-webkit-details-marker{ display:none; }
-.regola summary::after{ content:"+"; font-family:var(--f-mono); font-size:1.1rem; }
-.regola[open] summary::after{ content:"–"; }
+.regola summary::after{ content:"+"; font-family:var(--f-mono); font-size:1.1rem; transition:transform .2s ease; }
+.regola[open] summary::after{ transform:rotate(45deg); }
 .regola .corpo{ padding:0 1rem 1rem; font-size:.94rem; }
 .regola .corpo p + p{ margin-top:.5rem; }
 
@@ -360,6 +393,20 @@ footer{
   border-top:6px solid var(--sole);
 }
 footer .display{ font-size:1.4rem; color:var(--sole); margin-bottom:.4rem; }
+
+/* ---------- movimento: entrata hero + comparsa sezioni allo scroll ----------
+   Tutto solo transform/opacity, disattivato da prefers-reduced-motion.      */
+@media (prefers-reduced-motion: no-preference){
+  .hero-contenuto > *{ animation:salita .7s cubic-bezier(.16,1,.3,1) both; }
+  .hero-contenuto > .hero-sub{ animation-delay:.08s; }
+  .hero-contenuto > .hero-date{ animation-delay:.16s; }
+  html.js [data-reveal]{
+    opacity:0; transform:translateY(18px);
+    transition:opacity .6s cubic-bezier(.16,1,.3,1), transform .6s cubic-bezier(.16,1,.3,1);
+  }
+  html.js [data-reveal].rivelato{ opacity:1; transform:none; }
+}
+@keyframes salita{ from{ opacity:0; transform:translateY(16px); } }
 </style>
 </head>
 <body>
@@ -386,22 +433,26 @@ footer .display{ font-size:1.4rem; color:var(--sole); margin-bottom:.4rem; }
     <p class="hero-sub">Tre weekend di beach volley sotto il sole di Agosto: tabelloni live, gironi, finali al tramonto e merch ufficiale.</p>
     <div class="hero-date">
       <a class="bandiera" href="#tabelloni" data-vai-evento="m2x2">
-        <div class="quando">8–9 AGO</div>
+        <img class="badge-kit" src="badge-drago.jpg" alt="" aria-hidden="true">
+        <div class="quando">8-9 AGO</div>
         <div class="cosa">2×2</div>
         <div class="chi">Maschile · 32 coppie</div>
       </a>
       <a class="bandiera" href="#tabelloni" data-vai-evento="f2x2">
-        <div class="quando">12–13 AGO</div>
+        <img class="badge-kit" src="badge-sakura.jpg" alt="" aria-hidden="true">
+        <div class="quando">12-13 AGO</div>
         <div class="cosa">2×2</div>
         <div class="chi">Femminile · 20 coppie</div>
       </a>
       <a class="bandiera" href="#tabelloni" data-vai-evento="q4x4">
-        <div class="quando">12–13 AGO</div>
+        <img class="badge-kit" src="badge-fenice.jpg" alt="" aria-hidden="true">
+        <div class="quando">12-13 AGO</div>
         <div class="cosa">4×4</div>
         <div class="chi">Maschile · 12 squadre</div>
       </a>
       <a class="bandiera" href="#tabelloni" data-vai-evento="x2x2">
-        <div class="quando">22–23 AGO</div>
+        <img class="badge-kit" src="badge-koi.jpg" alt="" aria-hidden="true">
+        <div class="quando">22-23 AGO</div>
         <div class="cosa">2×2</div>
         <div class="chi">Misto · 32 coppie</div>
       </a>
@@ -411,8 +462,7 @@ footer .display{ font-size:1.4rem; color:var(--sole); margin-bottom:.4rem; }
 
 <!-- ================= EVENTI ================= -->
 <section id="eventi">
-  <div class="contenitore">
-    <div class="etichetta">Il programma</div>
+  <div class="contenitore" data-reveal>
     <h2 class="display titolo-sezione">Quattro eventi, tre weekend</h2>
     <div class="griglia-eventi" id="griglia-eventi"><!-- generata da JS --></div>
   </div>
@@ -420,7 +470,7 @@ footer .display{ font-size:1.4rem; color:var(--sole); margin-bottom:.4rem; }
 
 <!-- ================= TABELLONI ================= -->
 <section id="tabelloni">
-  <div class="contenitore">
+  <div class="contenitore" data-reveal>
     <div class="etichetta">Risultati in diretta</div>
     <h2 class="display titolo-sezione">Tabelloni</h2>
 
@@ -429,6 +479,11 @@ footer .display{ font-size:1.4rem; color:var(--sole); margin-bottom:.4rem; }
       <span class="nota-agg" id="nota-aggiornamento">Risultati caricati dal sito</span>
     </div>
 
+    <div class="cerca-squadra">
+      <input id="cerca-squadra" type="search" placeholder="Cerca la tua squadra…" autocomplete="off" aria-label="Cerca la tua squadra">
+    </div>
+    <div id="esito-ricerca" aria-live="polite"><!-- JS --></div>
+
     <div class="tabs" role="tablist" aria-label="Scegli evento" id="tabs-eventi"><!-- JS --></div>
     <div id="pannello-evento"><!-- JS --></div>
   </div>
@@ -436,8 +491,7 @@ footer .display{ font-size:1.4rem; color:var(--sole); margin-bottom:.4rem; }
 
 <!-- ================= ALBO D'ORO ================= -->
 <section id="albo">
-  <div class="contenitore">
-    <div class="etichetta">I podi</div>
+  <div class="contenitore" data-reveal>
     <h2 class="display titolo-sezione">Albo d'oro</h2>
     <div class="griglia-podio" id="griglia-albo"><!-- generata da JS --></div>
   </div>
@@ -445,77 +499,72 @@ footer .display{ font-size:1.4rem; color:var(--sole); margin-bottom:.4rem; }
 
 <!-- ================= SHOP ================= -->
 <section id="shop">
-  <div class="contenitore">
+  <div class="contenitore" data-reveal>
     <div class="etichetta">Merch ufficiale</div>
     <h2 class="display titolo-sezione">Shop</h2>
     <div class="griglia-shop">
-      <!-- I pantaloncini con data-viewer3d diventano modelli 3D girevoli (texture in tessuti-3d.js) -->
       <div class="prodotto">
-        <div class="foto foto-3d" data-viewer3d="drago">
-          <img src="grafica-pantaloncino-drago.jpg" alt="Pantaloncini Drago — kit 2×2 Maschile">
-          <span class="suggerimento-3d">↔ Trascina per ruotare</span>
+        <div class="foto">
+          <img src="grafica-pantaloncino-drago.jpg" alt="Pantaloncini Drago, kit 2×2 Maschile" style="object-fit:contain;background:#fff;">
         </div>
         <div class="info">
           <h3>Pantaloncini «Drago»</h3>
-          <p class="dettagli">Kit 2×2 Maschile · Taglie S–XXL</p>
-          <p class="prezzo">20 €</p>
-        </div>
-      </div>
-      <div class="prodotto">
-        <div class="foto foto-3d" data-viewer3d="onda">
-          <img src="grafica-pantaloncino-onda.jpg" alt="Pantaloncini Onda — kit 2×2 Misto">
-          <span class="suggerimento-3d">↔ Trascina per ruotare</span>
-        </div>
-        <div class="info">
-          <h3>Pantaloncini «Onda»</h3>
-          <p class="dettagli">Kit 2×2 Misto · Taglie S–XXL</p>
-          <p class="prezzo">20 €</p>
-        </div>
-      </div>
-      <div class="prodotto">
-        <div class="foto foto-3d" data-viewer3d="fenice">
-          <img src="grafica-pantaloncino-fenice.jpg" alt="Pantaloncini Fenice — kit 4×4 Maschile">
-          <span class="suggerimento-3d">↔ Trascina per ruotare</span>
-        </div>
-        <div class="info">
-          <h3>Pantaloncini «Fenice»</h3>
-          <p class="dettagli">Kit 4×4 Maschile · Taglie S–XXL</p>
+          <p class="dettagli">Kit 2×2 Maschile · Taglie S-XXL</p>
           <p class="prezzo">20 €</p>
         </div>
       </div>
       <div class="prodotto">
         <div class="foto">
-          <img src="grafica-top-onda.jpg" alt="Top Onda — kit 2×2 Misto" style="object-fit:contain;background:#fff;">
+          <img src="grafica-pantaloncino-onda.jpg" alt="Pantaloncini Onda, kit 2×2 Misto" style="object-fit:contain;background:#fff;">
+        </div>
+        <div class="info">
+          <h3>Pantaloncini «Onda»</h3>
+          <p class="dettagli">Kit 2×2 Misto · Taglie S-XXL</p>
+          <p class="prezzo">20 €</p>
+        </div>
+      </div>
+      <div class="prodotto">
+        <div class="foto">
+          <img src="grafica-pantaloncino-fenice.jpg" alt="Pantaloncini Fenice, kit 4×4 Maschile" style="object-fit:contain;background:#fff;">
+        </div>
+        <div class="info">
+          <h3>Pantaloncini «Fenice»</h3>
+          <p class="dettagli">Kit 4×4 Maschile · Taglie S-XXL</p>
+          <p class="prezzo">20 €</p>
+        </div>
+      </div>
+      <div class="prodotto">
+        <div class="foto">
+          <img src="grafica-top-onda.jpg" alt="Top Onda, kit 2×2 Misto" style="object-fit:contain;background:#fff;">
         </div>
         <div class="info">
           <h3>Top «Onda»</h3>
-          <p class="dettagli">Kit 2×2 Misto · Taglie S–XL</p>
+          <p class="dettagli">Kit 2×2 Misto · Taglie S-XL</p>
           <p class="prezzo">25 €</p>
         </div>
       </div>
       <div class="prodotto">
         <div class="foto">
-          <img src="grafica-top-sakura.jpg" alt="Top Sakura — kit 2×2 Femminile" style="object-fit:contain;background:#fff;">
+          <img src="grafica-top-sakura.jpg" alt="Top Sakura, kit 2×2 Femminile" style="object-fit:contain;background:#fff;">
         </div>
         <div class="info">
           <h3>Top «Sakura»</h3>
-          <p class="dettagli">Kit 2×2 Femminile · Taglie S–XL</p>
+          <p class="dettagli">Kit 2×2 Femminile · Taglie S-XL</p>
           <p class="prezzo">25 €</p>
         </div>
       </div>
     </div>
-    <p class="nota-shop">🏖️ Il merch è in vendita <b>direttamente al campo</b> durante i giorni di torneo, fino a esaurimento. Completo top + pantaloncini a <b>40 €</b>. Niente spedizioni: passa a trovarci!</p>
+    <p class="nota-shop">Il merch è in vendita <b>direttamente al campo</b> durante i giorni di torneo, fino a esaurimento. Completo top + pantaloncini a <b>40 €</b>. Niente spedizioni: passa a trovarci!</p>
   </div>
 </section>
 
 <!-- ================= REGOLAMENTO ================= -->
 <section id="regolamento">
-  <div class="contenitore">
-    <div class="etichetta">Come si gioca</div>
+  <div class="contenitore" data-reveal>
     <h2 class="display titolo-sezione">Regolamento</h2>
 
     <details class="regola" open>
-      <summary>2×2 Maschile e 2×2 Misto — doppia eliminazione</summary>
+      <summary>2×2 Maschile e 2×2 Misto: doppia eliminazione</summary>
       <div class="corpo">
         <p>32 coppie inserite nel <b>tabellone vincenti</b>. Chi perde una partita scende nel <b>tabellone perdenti</b>: la seconda sconfitta elimina. La vincente del tabellone perdenti affronta la vincente del tabellone vincenti nella <b>finalissima</b>.</p>
         <p>Partite al meglio di 1 set a 21 punti (finali: 2 set su 3, terzo set a 15). Cambio campo ogni 7 punti.</p>
@@ -523,7 +572,7 @@ footer .display{ font-size:1.4rem; color:var(--sole); margin-bottom:.4rem; }
     </details>
 
     <details class="regola">
-      <summary>2×2 Femminile — gironi + fase finale</summary>
+      <summary>2×2 Femminile: gironi + fase finale</summary>
       <div class="corpo">
         <p>20 coppie divise in <b>4 gironi da 5</b> all'italiana (tutte contro tutte). Le prime 2 di ogni girone accedono ai quarti di finale a eliminazione diretta.</p>
         <p>Gironi: 1 set a 21. Fase finale: 2 set su 3, terzo set a 15.</p>
@@ -531,7 +580,7 @@ footer .display{ font-size:1.4rem; color:var(--sole); margin-bottom:.4rem; }
     </details>
 
     <details class="regola">
-      <summary>4×4 Maschile — gironi + fase finale</summary>
+      <summary>4×4 Maschile: gironi + fase finale</summary>
       <div class="corpo">
         <p>12 squadre divise in <b>3 gironi da 4</b>. Si qualificano ai quarti le prime 2 di ogni girone e le <b>2 migliori terze</b>.</p>
         <p>Gironi: 1 set a 21. Fase finale: 2 set su 3, terzo set a 15.</p>
@@ -541,7 +590,7 @@ footer .display{ font-size:1.4rem; color:var(--sole); margin-bottom:.4rem; }
     <details class="regola">
       <summary>Norme generali</summary>
       <div class="corpo">
-        <p>Check-in 30 minuti prima della propria partita. Ritardo oltre 10 minuti = partita persa 21–0. Classifica gironi: vittorie, poi differenza set, poi differenza punti, poi scontro diretto.</p>
+        <p>Check-in 30 minuti prima della propria partita. Ritardo oltre 10 minuti = partita persa 21-0. Classifica gironi: vittorie, poi differenza set, poi differenza punti, poi scontro diretto.</p>
         <p>Arbitraggio a cura della squadra che riposa. Decisioni dell'organizzazione insindacabili. Si gioca con qualsiasi condizione meteo salvo diversa comunicazione.</p>
       </div>
     </details>
@@ -550,13 +599,12 @@ footer .display{ font-size:1.4rem; color:var(--sole); margin-bottom:.4rem; }
 
 <!-- ================= LOCATION ================= -->
 <section id="location">
-  <div class="contenitore">
-    <div class="etichetta">Dove siamo</div>
+  <div class="contenitore" data-reveal>
     <h2 class="display titolo-sezione">Location</h2>
     <div class="due-colonne">
       <div class="scheda">
         <h3>Playa Solero Beach Club</h3>
-        <p><b>Lungomare di Palombina — Ancona</b></p>
+        <p><b>Lungomare di Palombina, Ancona</b></p>
         <ul>
           <li><b>In auto:</b> SS16, uscita Palombina; parcheggio lungo Via delle Ville. Nei weekend di torneo consigliamo di arrivare entro le 8:30.</li>
           <li><b>In treno:</b> fermata Palombina a due passi dal campo.</li>
@@ -565,7 +613,7 @@ footer .display{ font-size:1.4rem; color:var(--sole); margin-bottom:.4rem; }
       </div>
       <div class="mappa">
         <a href="https://www.google.com/maps/search/?api=1&amp;query=Playa+Solero+Palombina+Ancona" target="_blank" rel="noopener" title="Apri in Google Maps">
-          <img src="mappa_belt.png" alt="Mappa — Playa Solero, lungomare di Palombina, tra la fermata Palombina e la spiaggia">
+          <img src="mappa_belt.png" alt="Mappa: Playa Solero, lungomare di Palombina, tra la fermata Palombina e la spiaggia">
         </a>
       </div>
     </div>
@@ -574,8 +622,7 @@ footer .display{ font-size:1.4rem; color:var(--sole); margin-bottom:.4rem; }
 
 <!-- ================= SPONSOR + CONTATTI ================= -->
 <section id="contatti">
-  <div class="contenitore">
-    <div class="etichetta">Chi ci sostiene</div>
+  <div class="contenitore" data-reveal>
     <h2 class="display titolo-sezione">Sponsor &amp; contatti</h2>
     <div class="fila-sponsor" style="margin-bottom:1.6rem;">
       <!-- 🔧 Sostituisci ogni riquadro con <img src="logo.png" alt="Nome sponsor"> -->
@@ -604,14 +651,9 @@ footer .display{ font-size:1.4rem; color:var(--sole); margin-bottom:.4rem; }
 
 <footer>
   <div class="display">BELT Beach Cup 2026</div>
-  <p>Agosto 2026 · Organizzazione BELT · Tutti i risultati su questa pagina</p>
+  <p>Agosto 2026, Playa Solero · Organizzazione BELT</p>
 </footer>
 
-<!-- Three.js per il visualizzatore 3D dello shop (se il CDN non è raggiungibile resta la foto) -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-<!-- Texture dei pantaloncini incorporate in base64 (generate dal PDF delle grafiche):
-     così il 3D funziona anche aprendo index.html in locale con doppio clic. -->
-<script src="tessuti-3d.js"></script>
 <script>
 /* ================================================================
    BELT BEACH CUP — logica tabelloni
@@ -731,13 +773,13 @@ function creaGirone(pref, nome, squadre){
 /* ---------- definizione eventi ---------- */
 const EVENTI = [
   {
-    id:'m2x2', nome:'2×2 Maschile', date:'8–9 Agosto', partecipanti:'32 coppie',
+    id:'m2x2', nome:'2×2 Maschile', date:'8-9 Agosto', partecipanti:'32 coppie', badge:'badge-drago.jpg',
     formula:'Doppia eliminazione (vincenti / perdenti)',
     fasi: creaDoppiaEliminazione('M', SQUADRE.m2x2),
     podio:{ oro:{t:'vinc',ref:'MF1-1'}, argento:{t:'perd',ref:'MF1-1'}, bronzo:{t:'perd',ref:'MP7-1'} },
   },
   {
-    id:'f2x2', nome:'2×2 Femminile', date:'12–13 Agosto', partecipanti:'20 coppie',
+    id:'f2x2', nome:'2×2 Femminile', date:'12-13 Agosto', partecipanti:'20 coppie', badge:'badge-sakura.jpg',
     formula:'4 gironi da 5 + fase finale',
     fasi: [
       {id:'gironi', nome:'Gironi', tipo:'gironi', qualificate:2,
@@ -762,7 +804,7 @@ const EVENTI = [
     podio:{ oro:{t:'vinc',ref:'FF-1'}, argento:{t:'perd',ref:'FF-1'}, bronzo:{t:'vinc',ref:'FF-2'} },
   },
   {
-    id:'q4x4', nome:'4×4 Maschile', date:'12–13 Agosto', partecipanti:'12 squadre',
+    id:'q4x4', nome:'4×4 Maschile', date:'12-13 Agosto', partecipanti:'12 squadre', badge:'badge-fenice.jpg',
     formula:'3 gironi da 4 + fase finale (2 migliori terze ripescate)',
     fasi: [
       {id:'gironi', nome:'Gironi', tipo:'gironi', qualificate:2, terze:2,
@@ -787,7 +829,7 @@ const EVENTI = [
     podio:{ oro:{t:'vinc',ref:'QF-1'}, argento:{t:'perd',ref:'QF-1'}, bronzo:{t:'vinc',ref:'QF-2'} },
   },
   {
-    id:'x2x2', nome:'2×2 Misto', date:'22–23 Agosto', partecipanti:'32 coppie',
+    id:'x2x2', nome:'2×2 Misto', date:'22-23 Agosto', partecipanti:'32 coppie', badge:'badge-koi.jpg',
     formula:'Doppia eliminazione (vincenti / perdenti)',
     fasi: creaDoppiaEliminazione('X', SQUADRE.x2x2),
     podio:{ oro:{t:'vinc',ref:'XF1-1'}, argento:{t:'perd',ref:'XF1-1'}, bronzo:{t:'perd',ref:'XP7-1'} },
@@ -901,13 +943,15 @@ function risolviLato(lato, evento){
     }
     return {nome:`${lato.rank}ª migliore terza`, definito:false};
   }
-  return {nome:'—', definito:false};
+  return {nome:'da definire', definito:false};
 }
 
 /* ================= RENDERING ================= */
 
 const $ = sel => document.querySelector(sel);
 let eventoAttivo = EVENTI[0].id;
+let RICERCA = '';   // testo della ricerca squadra (minuscolo, '' = nessuna)
+const corrisponde = nome => RICERCA && String(nome).toLowerCase().includes(RICERCA);
 const faseAttiva = {}; // id evento → id fase
 EVENTI.forEach(ev=>{ faseAttiva[ev.id] = ev.fasi[0].id; });
 
@@ -922,12 +966,13 @@ function htmlPartita(p, evento){
   const setsA = sets.map(s=>s.split(/[-–:]/)[0]).join(' ');
   const setsB = sets.map(s=>s.split(/[-–:]/)[1]).join(' ');
   const dove = [voce.c, voce.o].filter(Boolean).join(' · ');
-  return `<div class="partita ${live?'live':''}">
+  const evA = A.definito && corrisponde(A.nome), evB = B.definito && corrisponde(B.nome);
+  return `<div class="partita ${live?'live':''} ${evA||evB?'cercata':''}">
     <div class="codice"><span>${esc(p.titolo || p.id)}${live?' <span class="live-tag">● LIVE</span>':''}</span><span class="dove">${esc(dove)}</span></div>
-    <div class="riga-squadra ${r && r.vincitore==='A' ? 'vincente':''}">
+    <div class="riga-squadra ${r && r.vincitore==='A' ? 'vincente':''} ${evA?'evidenziata':''}">
       <span class="nome ${A.definito?'':'tbd'}">${esc(A.nome)}</span><span class="set">${setsA}</span>
     </div>
-    <div class="riga-squadra ${r && r.vincitore==='B' ? 'vincente':''}">
+    <div class="riga-squadra ${r && r.vincitore==='B' ? 'vincente':''} ${evB?'evidenziata':''}">
       <span class="nome ${B.definito?'':'tbd'}">${esc(B.nome)}</span><span class="set">${setsB}</span>
     </div>
   </div>`;
@@ -945,7 +990,7 @@ function htmlGironi(fase, evento){
   const blocchi = fase.gironi.map(g=>{
     const cl = classificaGirone(g);
     const righe = cl.map((s,i)=>`
-      <tr class="${i < fase.qualificate ? 'qualificata':''}">
+      <tr class="${i < fase.qualificate ? 'qualificata':''} ${corrisponde(s.nome)?'evidenziata':''}">
         <td>${esc(s.nome)}</td>
         <td class="num">${s.v}</td>
         <td class="num">${s.g}</td>
@@ -954,9 +999,9 @@ function htmlGironi(fase, evento){
     const partite = g.partite.map(p=>{
       const r = risultatoDi(p.id);
       const vs = r
-        ? `<b>${r.vincitore==='A'?'▸ ':''}${esc(p.a.n)}</b> – <b>${r.vincitore==='B'?'▸ ':''}${esc(p.b.n)}</b>`
-        : `${esc(p.a.n)} – ${esc(p.b.n)}`;
-      return `<div class="pg"><span class="vs">${vs}</span><span class="mono">${r ? esc(r.sets.join(' · ')) : p.id}</span></div>`;
+        ? `<b>${r.vincitore==='A'?'▸ ':''}${esc(p.a.n)}</b> vs <b>${r.vincitore==='B'?'▸ ':''}${esc(p.b.n)}</b>`
+        : `${esc(p.a.n)} vs ${esc(p.b.n)}`;
+      return `<div class="pg ${corrisponde(p.a.n)||corrisponde(p.b.n)?'evidenziata':''}"><span class="vs">${vs}</span><span class="mono">${r ? esc(r.sets.join(' · ')) : p.id}</span></div>`;
     }).join('');
     return `<div class="girone">
       <h4>${esc(g.nome)}</h4>
@@ -970,7 +1015,7 @@ function htmlGironi(fase, evento){
   const nota = fase.terze
     ? `Si qualificano le prime ${fase.qualificate} di ogni girone (banda gialla) + le ${fase.terze} migliori terze.`
     : `Si qualificano le prime ${fase.qualificate} di ogni girone (banda gialla).`;
-  return `<div class="griglia-gironi">${blocchi}</div><p class="legenda-gironi">V = vittorie · G = giocate · ±Pt = differenza punti. ${nota} Le partite senza risultato mostrano il proprio codice.</p>`;
+  return `<div class="griglia-gironi">${blocchi}</div><p class="legenda-gironi">V vittorie, G giocate, ±Pt differenza punti. ${nota} Le partite senza risultato mostrano il proprio codice.</p>`;
 }
 
 function renderTabs(){
@@ -1016,7 +1061,8 @@ function htmlProgramma(ev){
     } else {
       stato = `<span class="stato mono in-attesa">${esc(p.id)}</span>`;
     }
-    return `<div class="riga-prog ${live?'live':''}">
+    const evid = (A.definito && corrisponde(A.nome)) || (B.definito && corrisponde(B.nome));
+    return `<div class="riga-prog ${live?'live':''} ${evid?'evidenziata':''}">
       <span class="quando mono">${esc(voce.o)}</span>
       <span class="campo">${voce.c ? esc(voce.c) : ''}</span>
       <span class="chi-gioca">${esc(A.nome)} <i>vs</i> ${esc(B.nome)}</span>
@@ -1047,7 +1093,7 @@ function renderPannello(){
   const faseId = faseAttiva[ev.id];
   const subtabs = `<div class="subtabs" role="tablist" aria-label="Fase">` + ev.fasi.map(f=>`
     <button role="tab" aria-selected="${f.id===faseId}" data-fase="${f.id}">${esc(f.nome)}</button>`).join('')
-    + `<button role="tab" aria-selected="${faseId==='programma'}" data-fase="programma">🕐 Programma</button></div>`;
+    + `<button role="tab" aria-selected="${faseId==='programma'}" data-fase="programma">Programma</button></div>`;
   let corpo;
   if(faseId==='programma'){
     corpo = htmlProgramma(ev);
@@ -1061,7 +1107,10 @@ function renderPannello(){
 function renderEventiCards(){
   $('#griglia-eventi').innerHTML = EVENTI.map(ev=>`
     <div class="carta-evento">
-      <h3>${esc(ev.nome)}</h3>
+      <div class="testata">
+        <h3>${esc(ev.nome)}</h3>
+        ${ev.badge ? `<img class="badge-kit" src="${ev.badge}" alt="" aria-hidden="true">` : ''}
+      </div>
       <div class="dato"><span>Date</span><b>${esc(ev.date)}</b></div>
       <div class="dato"><span>Partecipanti</span><b>${esc(ev.partecipanti)}</b></div>
       <div class="dato"><span>Formula</span><b style="text-align:right">${esc(ev.formula)}</b></div>
@@ -1070,6 +1119,86 @@ function renderEventiCards(){
 }
 
 function renderTutto(){ renderTabs(); renderPannello(); }
+
+/* ---------- ricerca squadra ---------- */
+
+// tutti i nomi "veri" (non segnaposto) di un evento
+function squadreEvento(ev){
+  const set = new Set();
+  ev.fasi.forEach(f=>{
+    if(f.tipo==='gironi') f.gironi.forEach(g=>g.squadre.forEach(n=>set.add(n)));
+    else f.rounds.forEach(r=>r.partite.forEach(p=>{
+      if(p.a.t==='sq') set.add(p.a.n);
+      if(p.b.t==='sq') set.add(p.b.n);
+    }));
+  });
+  return [...set];
+}
+
+// prossima partita non giocata di una squadra (prima quelle con orario)
+function prossimaPartitaDi(ev, nome){
+  const pendenti = tutteLePartite(ev).filter(p=>{
+    if(risultatoDi(p.id) || liveDi(p.id)) return false;
+    const A = risolviLato(p.a, ev), B = risolviLato(p.b, ev);
+    return (A.definito && A.nome===nome) || (B.definito && B.nome===nome);
+  });
+  pendenti.sort((x,y)=>{
+    const ox = (RISULTATI[x.id]||{}).o, oy = (RISULTATI[y.id]||{}).o;
+    if(ox && oy){
+      const a = chiaveOrario(ox), b = chiaveOrario(oy);
+      return a[0]-b[0] || String(a[1]).localeCompare(String(b[1]));
+    }
+    return ox ? -1 : (oy ? 1 : 0);
+  });
+  return pendenti[0] || null;
+}
+
+function renderEsitoRicerca(){
+  const box = $('#esito-ricerca');
+  if(!RICERCA){ box.innerHTML = ''; return; }
+  const trovate = [];
+  EVENTI.forEach(ev=>squadreEvento(ev).forEach(n=>{
+    if(n.toLowerCase().includes(RICERCA)) trovate.push({ev, n});
+  }));
+  if(!trovate.length){
+    box.innerHTML = `<div class="esito-ricerca">Nessuna squadra trovata: controlla il nome (o guarda le liste dei gironi).</div>`;
+    return;
+  }
+  const righe = trovate.slice(0,4).map(({ev, n})=>{
+    const testa = `<b>${esc(n)}</b> <span class="ev-nome">· ${esc(ev.nome)}</span>`;
+    // in campo ora?
+    const ora = tutteLePartite(ev).find(p=> liveDi(p.id) &&
+      [p.a, p.b].some(l=>{ const r = risolviLato(l, ev); return r.definito && r.nome===n; }));
+    if(ora){
+      const voce = RISULTATI[ora.id] || {};
+      return `<div>${testa}<br><span class="in-campo">● In campo ora</span>: ${esc(ora.titolo||ora.id)}${voce.c?' · '+esc(voce.c):''}</div>`;
+    }
+    const p = prossimaPartitaDi(ev, n);
+    if(!p) return `<div>${testa}<br>Nessuna partita in programma al momento.</div>`;
+    const voce = RISULTATI[p.id] || {};
+    const A = risolviLato(p.a, ev), B = risolviLato(p.b, ev);
+    const avversario = (A.definito && A.nome===n) ? B.nome : A.nome;
+    const dove = [voce.o, voce.c].filter(Boolean).join(' · ');
+    return `<div>${testa}<br>Prossima: <b>${esc(p.titolo||p.id)}</b> vs ${esc(avversario)}${dove ? ' · <b>'+esc(dove)+'</b>' : ' (orario da definire)'}</div>`;
+  }).join('');
+  const extra = trovate.length>4 ? `<div class="ev-nome">…e altre ${trovate.length-4}: scrivi qualche lettera in più.</div>` : '';
+  box.innerHTML = `<div class="esito-ricerca">${righe}${extra}</div>`;
+}
+
+$('#cerca-squadra').addEventListener('input', e=>{
+  const q = e.target.value.trim().toLowerCase();
+  RICERCA = q.length >= 2 ? q : '';
+  if(RICERCA){
+    // se la squadra è in un altro evento, passa a quel tabellone
+    const qui = squadreEvento(EVENTI.find(ev=>ev.id===eventoAttivo)).some(n=>n.toLowerCase().includes(RICERCA));
+    if(!qui){
+      const altro = EVENTI.find(ev=>squadreEvento(ev).some(n=>n.toLowerCase().includes(RICERCA)));
+      if(altro){ eventoAttivo = altro.id; renderTabs(); }
+    }
+  }
+  renderPannello();
+  renderEsitoRicerca();
+});
 
 /* ---------- interazioni ---------- */
 document.addEventListener('click', e=>{
@@ -1086,9 +1215,12 @@ document.addEventListener('click', e=>{
 // legge il CSV pubblicato: intestazioni "id, punteggio, orario, campo"
 // (l'ordine delle colonne è libero; orario e campo sono facoltativi)
 function analizzaCSV(testo){
-  const righe = testo.trim().split(/\r?\n/).map(r=>r.split(',').map(c=>c.replace(/^"|"$/g,'').trim()));
+  // via il BOM (carattere invisibile, codice 65279, che Google mette in testa al CSV)
+  const pulito = String(testo).charCodeAt(0) === 65279 ? String(testo).slice(1) : String(testo);
+  const righe = pulito.trim()
+    .split(/\r?\n/).map(r=>r.split(',').map(c=>c.replace(/^"|"$/g,'').trim()));
   if(righe.length < 2) return {};
-  const intest = righe[0].map(c=>c.toLowerCase());
+  const intest = righe[0].map(c=>c.toLowerCase().replace(/[^a-z]/g, ''));
   const iId = intest.indexOf('id'),
         iP  = intest.findIndex(c=>c.startsWith('punteggio')),
         iO  = intest.findIndex(c=>c.startsWith('orario')),
@@ -1110,138 +1242,43 @@ function analizzaCSV(testo){
 async function aggiornaDaFoglio(){
   try{
     const resp = await fetch(FOGLIO_GOOGLE + (FOGLIO_GOOGLE.includes('?')?'&':'?') + 'nocache=' + Date.now());
-    if(!resp.ok) throw new Error(resp.status);
-    RISULTATI = analizzaCSV(await resp.text());
+    if(!resp.ok) throw new Error('HTTP ' + resp.status);
+    const testo = await resp.text();
+    RISULTATI = analizzaCSV(testo);
     renderPannello();
     renderAlbo();
+    renderEsitoRicerca();
+    const n = Object.keys(RISULTATI).length;
     const ora = new Date().toLocaleTimeString('it-IT', {hour:'2-digit', minute:'2-digit'});
-    $('#nota-aggiornamento').textContent = `Live · aggiornato alle ${ora}`;
-    $('#pallino-live').classList.add('attivo');
+    if(n > 0){
+      $('#nota-aggiornamento').textContent = `Live · ${n} ${n===1?'partita':'partite'} dal foglio · aggiornato alle ${ora}`;
+      $('#pallino-live').classList.add('attivo');
+    } else {
+      $('#nota-aggiornamento').textContent = 'Foglio letto, ma nessuna riga riconosciuta: controlla che la prima riga sia "id, punteggio, orario, campo" e che gli id (es. MV1-1) siano giusti';
+      console.warn('CSV ricevuto dal foglio:\n', testo.slice(0, 500));
+    }
   }catch(err){
-    $('#nota-aggiornamento').textContent = 'Collegamento al foglio non riuscito — mostro gli ultimi dati disponibili';
+    $('#nota-aggiornamento').textContent = 'Collegamento al foglio non riuscito (' + err.message + '): mostro gli ultimi dati disponibili';
     console.error('Errore lettura foglio:', err);
   }
 }
 
-/* ================= SHOP: PANTALONCINI 3D ================= */
-/* Ogni card con [data-viewer3d="chiave"] diventa un modello 3D girevole.
-   Le texture (gamba destra = grafica, gamba sinistra = sponsor) sono in
-   tessuti-3d.js, incorporate in base64: il 3D funziona anche in locale.
-   Se Three.js o le texture non sono disponibili, resta la foto. */
-
-// rotazione iniziale delle gambe: porta il "FRONTE" del cartamodello verso chi guarda
-// 🔧 se fronte e retro risultano invertiti, scambia i due segni
-const FRONTE_AVANTI = { dx: Math.PI/2, sx: -Math.PI/2 };
-// colore dell'elastico in vita per ogni kit
-const VITA_3D = { drago:0x0D2A43, onda:0x14243E, fenice:0x241B18 };
-
-function avviaViewer3D(box){
-  const img = box.querySelector('img');
-  const chiave = box.dataset.viewer3d;
-  const tess = (typeof TESSUTI_3D !== 'undefined') ? TESSUTI_3D[chiave] : null;
-  if(!img || !tess || typeof THREE === 'undefined') return;  // resta la foto
-
-  const carica = src => new Promise((ok, no)=>{
-    const im = new Image();
-    im.onload = ()=>ok(im); im.onerror = no;
-    im.src = src;
-  });
-
-  Promise.all([carica(tess.dx), carica(tess.sx)]).then(([imDx, imSx])=>{
-    try{
-      const materiale = (im) => {
-        const c = document.createElement('canvas');
-        c.width = 1024; c.height = 1024;
-        c.getContext('2d').drawImage(im, 0, 0, 1024, 1024);
-        const t = new THREE.CanvasTexture(c);
-        t.anisotropy = 4;
-        return new THREE.MeshLambertMaterial({map:t, side:THREE.DoubleSide});
-      };
-      const matDx = materiale(imDx);
-      const matSx = materiale(imSx);
-      const matScuro = new THREE.MeshLambertMaterial({color:VITA_3D[chiave] ?? 0x0D2A43, side:THREE.DoubleSide});
-
-      const scena = new THREE.Scene();
-      const camera = new THREE.PerspectiveCamera(35, 1, .1, 100);
-      camera.position.set(0, .35, 7.2);
-      camera.lookAt(0, -.15, 0);
-
-      const renderer = new THREE.WebGLRenderer({antialias:true, alpha:true});
-      renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
-      const ridimensiona = () => { const s = box.clientWidth || 300; renderer.setSize(s, s); };
-      ridimensiona();
-      window.addEventListener('resize', ridimensiona);
-
-      box.appendChild(renderer.domElement);
-      img.style.display = 'none';
-      box.classList.add('attiva-3d');
-
-      scena.add(new THREE.AmbientLight(0xffffff, .9));
-      const luce = new THREE.DirectionalLight(0xffffff, .45);
-      luce.position.set(2, 3, 4);
-      scena.add(luce);
-
-      const gruppo = new THREE.Group();
-
-      // gamba: cilindro svasato aperto in fondo (lato: +1 destra, -1 sinistra)
-      const gamba = (mat, lato, chiave) => {
-        const geo = new THREE.CylinderGeometry(.78, .96, 2.3, 48, 1, true);
-        const m = new THREE.Mesh(geo, mat);
-        m.position.set(lato*.60, -.62, 0);
-        m.rotation.z = -lato*.10;               // gambe leggermente divaricate
-        m.rotation.y = FRONTE_AVANTI[chiave];   // fronte del cartamodello in avanti
-        return m;
-      };
-      gruppo.add(gamba(matDx, +1, 'dx'));
-      gruppo.add(gamba(matSx, -1, 'sx'));
-
-      // fascia in vita (elastico scuro) + chiusura superiore
-      const fascia = new THREE.Mesh(new THREE.CylinderGeometry(1.0, 1.04, .42, 48, 1, true), matScuro);
-      fascia.position.y = .70; fascia.scale.set(1.45, 1, .82);
-      gruppo.add(fascia);
-      const tappo = new THREE.Mesh(new THREE.CircleGeometry(1.0, 48), matScuro);
-      tappo.rotation.x = -Math.PI/2; tappo.position.y = .90; tappo.scale.set(1.45, .82, 1);
-      gruppo.add(tappo);
-
-      gruppo.rotation.x = -.06;
-      scena.add(gruppo);
-
-      // interazione: trascina per ruotare; rotazione automatica finché non tocchi
-      let ruotaAuto = true, punta = null, inclinazione = -.06;
-      box.addEventListener('pointerdown', e=>{
-        punta = {x:e.clientX, y:e.clientY};
-        ruotaAuto = false;
-        box.classList.add('trascinando');
-        e.preventDefault();
-      });
-      window.addEventListener('pointermove', e=>{
-        if(!punta) return;
-        gruppo.rotation.y += (e.clientX - punta.x) * .012;
-        inclinazione = Math.max(-.6, Math.min(.6, inclinazione + (e.clientY - punta.y) * .006));
-        punta = {x:e.clientX, y:e.clientY};
-      });
-      window.addEventListener('pointerup', ()=>{ punta = null; box.classList.remove('trascinando'); });
-
-      (function anima(){
-        requestAnimationFrame(anima);
-        if(ruotaAuto) gruppo.rotation.y += .006;
-        gruppo.rotation.x += (inclinazione - gruppo.rotation.x) * .15;
-        renderer.render(scena, camera);
-      })();
-    }catch(err){
-      console.error('Visualizzatore 3D non disponibile:', err);
-      box.querySelectorAll('canvas').forEach(c=>c.remove());
-      box.classList.remove('attiva-3d');
-      img.style.display = '';  // torna la foto
-    }
-  }).catch(()=>{ /* texture non caricate: resta la foto */ });
+/* ---------- comparsa dolce delle sezioni allo scroll ----------
+   Usa IntersectionObserver (mai listener sullo scroll); lo stato "nascosto"
+   iniziale esiste solo se JS e observer sono attivi e il visitatore non ha
+   chiesto meno animazioni: senza JS la pagina resta visibile al 100%.     */
+if('IntersectionObserver' in window && matchMedia('(prefers-reduced-motion: no-preference)').matches){
+  document.documentElement.classList.add('js');
+  const osservatore = new IntersectionObserver(voci=>voci.forEach(v=>{
+    if(v.isIntersecting){ v.target.classList.add('rivelato'); osservatore.unobserve(v.target); }
+  }), {threshold:.1});
+  document.querySelectorAll('[data-reveal]').forEach(el=>osservatore.observe(el));
 }
 
 /* ---------- avvio ---------- */
 renderEventiCards();
 renderTutto();
 renderAlbo();
-document.querySelectorAll('[data-viewer3d]').forEach(avviaViewer3D);
 if(FOGLIO_GOOGLE){
   aggiornaDaFoglio();
   setInterval(aggiornaDaFoglio, AGGIORNA_OGNI_SECONDI*1000);
